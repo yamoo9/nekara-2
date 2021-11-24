@@ -1,0 +1,88 @@
+:root {
+  --color-primary: #415162;
+  --color-lightgray: #f2f2f2;
+  --color-vividgray: rgba(50 50 50 / 4%);
+  --color-white: rgba(255 255 255 / 96%);
+
+  box-sizing: border-box;
+}
+
+body,
+body *,
+body::before,
+body::after,
+body *::before,
+body *::after  {
+  box-sizing: inherit;
+}
+
+body {
+  font: 1rem/1.5 "Spoqa Han Sans Neo", sans-serif;
+  background: var(--color-vividgray);
+  color: var(--color-primary);
+}
+
+#app {
+  display: flex;
+  flex-flow: column-reverse;
+  align-items: flex-start;
+  min-width: 320px;
+  margin: 1rem;
+  border: 1px solid var(--color-primary);
+  padding: 1.6rem;
+  background: var(--color-white);
+}
+
+.contents h1, 
+.contents p {
+  margin-top: 0;
+}
+
+.contents h1 {
+  line-height: 1;
+}
+
+.contents p {
+  margin-bottom: 0;
+}
+
+.button__translation {
+  cursor: pointer;  
+  margin-bottom: 20px;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  padding: 0.4em 0.5em;
+  font-size: 0.6rem;
+  color: var(--color-primary);
+  touch-action: none;
+  box-shadow: 0 2px 2px var(--color-primary);
+}
+
+.button__translation:hover {
+  background: var(--color-lightgray);
+}
+
+.button__translation:active {
+  transform: scale(0.95);
+}
+
+.button__translation svg {
+  pointer-events: none;
+  fill: currentColor;
+}
+
+@media (min-width: 40em) {
+  #app {
+    flex-flow: row;
+    margin: 4rem;
+  }
+  
+  .contents {
+    flex: 1;
+    margin-right: 4rem;
+  }
+  
+  .button__translation {
+    margin-bottom: 0;
+  }
+}

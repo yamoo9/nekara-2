@@ -1,0 +1,23 @@
+{
+  "private": "true",
+  "name": "imperative-programming",
+  "description": "명령형 프로그래밍 실습",
+  "scripts": {
+    "start": "npm run dev:compile-watch & npm run dev:server-open",
+    "dev:server-open": "OPEN=/client npm run dev:server",
+    "dev:server": "node server/index",
+    "dev:compile": "babel ./client/src/main.js -o ./client/js/main.js",
+    "dev:compile-dir": "babel ./client/src -d ./client/js",
+    "dev:compile-watch": "npm run dev:compile -- -w",
+    "clear": "rimraf -rf client/js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "rimraf": "^3.0.2"
+  }
+}
