@@ -3,7 +3,7 @@
   "name": "imperative-programming",
   "description": "명령형 프로그래밍 실습",
   "scripts": {
-    "start": "npm run dev:compile-watch & npm run dev:server-open",
+    "start": "run-p dev:compile-watch dev:server-open",
     "dev:server-open": "cross-env OPEN=client npm run dev:server",
     "dev:server": "node server/index",
     "dev:compile": "babel ./client/src/main.js -o ./client/js/main.js",
@@ -17,6 +17,7 @@
     "@babel/preset-env": "^7.16.4",
     "cross-env": "^7.0.3",
     "live-server": "^1.2.1",
+    "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2"
   }
 }
