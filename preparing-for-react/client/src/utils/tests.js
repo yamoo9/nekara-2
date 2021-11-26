@@ -16,9 +16,24 @@ export function expect(received) {
         throwError(`${received}와 ${expected} 값은 동일하지 않습니다.`);
       }
     },
+    toBeTruthy() {
+      if (received !== true) {
+        throwError(`${received} 값은 true가 아닙니다.`);
+      }
+    },
+    toBeFalsy() {
+      if (received !== false) {
+        throwError(`${received} 값은 false가 아닙니다.`);
+      }
+    },
     toBeInTheDocoument() {
       if (!document.body.contains(received)) {
         throwError(`${received}는 문서에 포함되지 않습니다.`);
+      }
+    },
+    toHaveClass(expected) {
+      if (!received.classList.contains(expected)) {
+        throwError(`${received} 요소는 ${expected} 클래스 이름을 포함하지 않습니다.`);
       }
     },
     not: {

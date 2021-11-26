@@ -1,1 +1,1 @@
-import "./utils/transformText.test.js";
+import "./domTest/index.js";
