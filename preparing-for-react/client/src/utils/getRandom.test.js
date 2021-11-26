@@ -8,7 +8,8 @@ test('getRandom(10) 실행 결과는 10보다 작다.', () => {
 });
 
 test('getRandomCount(5, 7) 실행 결과는 5 이상 7 이하이다.', () => {
-  let min = 5, max = 7;
+  let min = 5,
+    max = 7;
   let minmaxValue = getRandomCount(min, max);
   console.log(`getRandom(min, max) = ${minmaxValue}`);
   expect(minmaxValue >= min).toBe(true);

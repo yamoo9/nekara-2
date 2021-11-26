@@ -7,9 +7,13 @@ export function kebabCase(data) {
 }
 
 export function camelCase(data) {
-  return data.toString().replace(/\s\w/g, match => match.toUpperCase().trim());
+  return data
+    .toString()
+    .replace(/\s\w/g, (match) => match.toUpperCase().trim());
 }
 
 export function titleCase(data) {
-  return data.toString().replace(/(^\w|\s\w)/g, match => match.toUpperCase().trim());
+  return data
+    .toString()
+    .replace(/(^\w|\s\w)/g, (match) => match.toUpperCase().trim());
 }

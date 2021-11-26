@@ -33,7 +33,9 @@ export function expect(received) {
     },
     toHaveClass(expected) {
       if (!received.classList.contains(expected)) {
-        throwError(`${received} 요소는 ${expected} 클래스 이름을 포함하지 않습니다.`);
+        throwError(
+          `${received} 요소는 ${expected} 클래스 이름을 포함하지 않습니다.`
+        );
       }
     },
     not: {
@@ -47,8 +49,8 @@ export function expect(received) {
           throwError(`${received}는 문서에 포함되어 있습니다.`);
         }
       },
-    }
-  }
+    },
+  };
 }
 
 // 테스트(test) 유틸리티
@@ -59,7 +61,7 @@ export function test(description, callback) {
   try {
     callback();
     console.log(`🟢 테스트 성공: ${description}`);
-  } catch(error) {
+  } catch (error) {
     console.groupCollapsed(`🔴 테스트 실패: ${description}`);
     console.error(error.message);
     console.groupEnd();

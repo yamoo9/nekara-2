@@ -19,4 +19,4 @@ describe('텍스트 트랜스폼 유틸리티 테스트', () => {
   test(`titleCase('simple is best') → 'SimpleIsBest'`, () => {
     expect(titleCase(testMessage)).toBe('SimpleIsBest');
   });
-})
+});
