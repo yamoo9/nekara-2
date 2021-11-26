@@ -1,7 +1,18 @@
 {
+  "private": true,
+  "type": "module",
+  "name": "preparing-for-react",
+  "description": "React 학습 전에 알아야 할 개발 환경 구성 공부",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "cross-env OPEN='/client/public' npm run dev",
+    "dev": "cross-env PORT=8080 node server/index.mjs",
+    "test": ""
+  },
   "devDependencies": {
     "@types/live-server": "^1.2.1",
     "@types/node": "^16.11.10",
+    "cross-env": "^7.0.3",
     "live-server": "^1.2.1"
   }
 }
