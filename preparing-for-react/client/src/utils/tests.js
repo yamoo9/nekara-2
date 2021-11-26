@@ -7,7 +7,7 @@ import throwError from './throwError.js';
 // expect(전달값).toBeInTheDocument(기대값)
 // expect(전달값).not.toBeInTheDocument(기대값)
 
-function expect(received) {
+export function expect(received) {
   // 전달 값과 비교할 수 있는 유틸리티 모음 객체 반환
   return {
     toBe(expected) {
@@ -39,7 +39,7 @@ function expect(received) {
 // 테스트(test) 유틸리티
 // 코드 사용 예시)
 // test('1 + 1 = 2', () => expect(1 + 1).not.toBe('12'))
-function test(description, callback) {
+export function test(description, callback) {
   // 오류 발생 여부 감지
   try {
     callback();
@@ -54,7 +54,7 @@ function test(description, callback) {
 // 기술(describe) 유틸리티
 // 코드 사용 예시)
 // describe('테스트 리스트 항목을 대변하는 레이블', () => { test(); test(); ... })
-function describe(testLabel, callback) {
+export function describe(testLabel, callback) {
   console.group(testLabel);
   callback();
   console.groupEnd();
