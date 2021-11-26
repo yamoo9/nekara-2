@@ -8,8 +8,8 @@
     "dev:server": "node server/index",
     "dev:compile": "babel ./client/src/main.js -o ./client/js/main.js",
     "dev:compile-dir": "babel ./client/src -d ./client/js",
-    "dev:compile-watch": "npm run dev:compile -- -w",
-    "clear": "rimraf -rf client/js"
+    "dev:compile-watch": "npm run dev:compile-dir -- -w",
+    "clear": "rimraf -rf ./client/js"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",

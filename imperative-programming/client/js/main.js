@@ -20,6 +20,7 @@ if ('jQuery' in window) {
       var $contents = $('.contents');
       var $headline = $contents.find(':header');
       var $description = $contents.find('p');
+      $contents.attr('lang', translator.currentMode);
       $headline.text(headline);
       $description.text(description);
       var label = translator.getLabel();

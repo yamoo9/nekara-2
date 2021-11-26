@@ -31,6 +31,9 @@ if ('jQuery' in window) {
       const $headline = $contents.find(':header');
       const $description = $contents.find('p');
 
+      // 콘텐츠 요소의 언어 모드 업데이트
+      $contents.attr('lang', translator.currentMode);
+
       // 헤드라인, 디스크립션 요소의 텍스트 콘텐츠 업데이트
       $headline.text(headline);
       $description.text(description);
