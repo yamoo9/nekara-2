@@ -1,12 +1,11 @@
 import liveServer from 'live-server';
 
-console.log({port: process.env.PORT});
-console.log({open: process.env.OPEN});
+const { PORT, OPEN } = process.env;
 
 const params = {
   host: 'localhost',
-  port: process.env.PORT || 3000,
-  open: process.env.OPEN || false
+  port: PORT || 3000,
+  open: OPEN || false
 }
 
 liveServer.start(params);
