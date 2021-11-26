@@ -7,12 +7,17 @@
   "scripts": {
     "start": "cross-env OPEN='/client/public' npm run dev",
     "dev": "cross-env PORT=8080 node server/index.mjs",
+    "lint": "eslint ./client --ignore-path .gitignore",
+    "watch:lint": "esw ./client --watch --color --ignore-path .gitignore",
     "test": ""
   },
   "devDependencies": {
     "@types/live-server": "^1.2.1",
     "@types/node": "^16.11.10",
     "cross-env": "^7.0.3",
+    "eslint": "^8.3.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-watch": "^8.0.0",
     "live-server": "^1.2.1"
   }
 }
