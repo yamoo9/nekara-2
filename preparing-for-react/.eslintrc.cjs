@@ -1,29 +1,33 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    'globals/jest': true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:jest/recommended',
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 13,
-        "sourceType": "module"
+    ecmaVersion: 13,
+    sourceType: 'module',
+  },
+  settings: {
+    react: {
+      version: 'detect',
     },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
+    jest: {
+      version: require('jest/package.json').version,
     },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-      "no-unused-vars": "warn"
-    }
+  },
+  plugins: ['react', 'jest'],
+  rules: {
+    'no-unused-vars': 'warn',
+    'no-console': 'off',
+  },
 };

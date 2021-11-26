@@ -1,4 +1,4 @@
-import { test, describe, expect } from './tests.js';
+// import { test, describe, expect } from './tests.js';
 import { snakeCase, kebabCase, camelCase, titleCase } from './transformText.js';
 
 let testMessage = 'simple is best';
