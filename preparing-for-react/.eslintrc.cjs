@@ -34,6 +34,7 @@ module.exports = {
   plugins: ['react', 'jest'],
   rules: {
     'no-unused-vars': 'warn',
+    'jest/no-commented-out-tests': 'off',
     'no-console': 'off',
   },
 };
