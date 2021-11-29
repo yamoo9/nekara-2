@@ -13,14 +13,57 @@
     <!-- React UI 라이브러리 로드 -->
     <script src="//unpkg.com/react/umd/react.development.js" crossorigin></script>
     <script src="//unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+    <script src="//unpkg.com/react-dom/umd/react-dom-server.browser.development.js" crossorigin></script>
+    <script src="//unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
   </head>
 
   <body>
 
     <div id="app"></div>
 
+    <script type="text/babel">
+      // React.createElement API
+      // JSX (XML 문법을 사용하는 ECMAScript 확장)
+
+      const jsxIsReactElement = (
+        <div id="jsx-is">JSX is React Element</div>
+      )
+      // console.log(jsxIsReactElement);
+
+      // 콘텐츠 영역: JSX(React 요소)를 반환하는 함수
+      function renderHeadline(headlineContent) {
+        return (
+          <div className="contents" lang="en">
+            <h1>{headlineContent}</h1>
+            <p>선언형 프로그래밍은 명령형 프로그래밍 패러다임의 반대 개념으로...</p>
+          </div>
+        )
+      }
+
+      // { type, props, key, ... }
+
+      function renderAppElement() {
+        const appElement = (
+          <React.Fragment>
+            {renderHeadline(`React's Data Interpolation`)}
+            <button
+              type="button"
+              className="button__translation"
+              aria-label="영 → 한 번역"
+              title="영 → 한 번역"
+            >
+              영 → 한 번역
+            </button>
+          </React.Fragment>
+        )
+        return appElement;
+      }
+
+      ReactDOM.render(renderAppElement(), document.getElementById('app'));
+    </script>
+
     <script>
-      (function renderReactApp(global, React, ReactDOM) {
+      (function renderReactApp(global, React, ReactDOM, ReactDOMServer) {
         'use strict';
 
         // 구조 분해 할당
@@ -94,13 +137,19 @@
 
         // ReactDOM.render() API 활용
         // app rendering : React Element(VDOMNode) → Actual DOM Node에 착장(mount)
+
+        const fragmentApp = h(
+          React.Fragment,
+          null,
+          contentsElement,
+          translationButtonElement,
+        );
+
+        const ssr = ReactDOMServer.renderToString(fragmentApp);
+        console.log(ssr);
+
         ReactDOM.render(
-          h(
-            React.Fragment,
-            null,
-            contentsElement,
-            translationButtonElement,
-          ),
+          fragmentApp,
           document.getElementById('app'),
           // () => {
           //   console.log('success rendering');
@@ -108,7 +157,7 @@
         );
 
 
-      })(window, window.React, window.ReactDOM);
+      }) //(window, window.React, window.ReactDOM, window.ReactDOMServer);
     </script>
 
     <div id="app2" hidden>
