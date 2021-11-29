@@ -1,4 +1,4 @@
-#app {
+.app {
   display: flex;
   flex-flow: column-reverse;
   align-items: flex-start;
