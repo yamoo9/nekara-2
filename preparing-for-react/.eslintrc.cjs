@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    // 'jest/globals': true
   },
   // [ESLint 글로벌 설정]
   //  ESLint는 실행 환경에 존재하는 전역 변수에 대해 가정하지 않습니다.

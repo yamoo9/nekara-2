@@ -8,11 +8,12 @@
     "start": "cross-env OPEN='/client/public' npm run dev",
     "dev": "cross-env PORT=8080 node server/index.mjs",
     "lint": "eslint ./client --ignore-path .gitignore",
+    "format": "prettier --write ./client --ignore-path .gitignore",
+    "test": "jest",
     "watch": "run-p watch:**",
     "watch:lint": "esw ./client --watch --color --ignore-path .gitignore",
-    "format": "prettier --write ./client --ignore-path .gitignore",
     "watch:format": "onchange ./client -- npm run format {{changed}}",
-    "test": "jest --watchAll"
+    "watch:test": "npm test -- --watchAll"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
