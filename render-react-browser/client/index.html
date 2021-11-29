@@ -31,35 +31,43 @@
       // console.log(jsxIsReactElement);
 
       // 콘텐츠 영역: JSX(React 요소)를 반환하는 함수
-      function renderHeadline(headlineContent) {
+      function Headline() {
         return (
           <div className="contents" lang="en">
-            <h1>{headlineContent}</h1>
+            <h1>선언형 프로그래밍</h1>
             <p>선언형 프로그래밍은 명령형 프로그래밍 패러다임의 반대 개념으로...</p>
           </div>
         )
       }
 
-      // { type, props, key, ... }
-
-      function renderAppElement() {
-        const appElement = (
-          <React.Fragment>
-            {renderHeadline(`React's Data Interpolation`)}
-            <button
-              type="button"
-              className="button__translation"
-              aria-label="영 → 한 번역"
-              title="영 → 한 번역"
-            >
-              영 → 한 번역
-            </button>
-          </React.Fragment>
+      function TranslationButton() {
+        return (
+          <button
+            type="button"
+            className="button__translation"
+            aria-label="영 → 한 번역"
+            title="영 → 한 번역"
+          >
+            영 → 한 번역
+          </button>
         )
-        return appElement;
       }
 
-      ReactDOM.render(renderAppElement(), document.getElementById('app'));
+      // { type, props, key, ... }
+
+      function App() {
+        return (
+          <React.Fragment>
+            {React.createElement( Headline )}
+            {React.createElement(TranslationButton)}
+          </React.Fragment>
+        )
+      }
+
+      // React.createElement(FunctionalComponent) → JSX
+      // <FunctionalComponent />
+      ReactDOM.render(<App />, document.getElementById('app'));
+      // ReactDOM.render(React.createElement(App), document.getElementById('app'));
     </script>
 
     <script>
