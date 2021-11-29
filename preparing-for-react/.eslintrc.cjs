@@ -16,6 +16,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:jest/recommended',
+    'plugin:jest-dom/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -32,10 +33,11 @@ module.exports = {
       version: require('jest/package.json').version,
     },
   },
-  plugins: ['react', 'jest'],
+  plugins: ['react', 'jest', 'jest-dom'],
   rules: {
     'no-unused-vars': 'warn',
-    'jest/no-commented-out-tests': 'off',
     'no-console': 'off',
+    'jest/no-commented-out-tests': 'off',
+    'jest/expect-expect': 'off',
   },
 };

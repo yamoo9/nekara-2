@@ -6,7 +6,8 @@ test(`addClass(document.body, 'some') 함수 사용 시 document.body는 'some' 
   const targetNode = document.body;
   let addedClassName = 'some';
   addClass(targetNode, addedClassName);
-  expect(targetNode.classList.contains(addedClassName)).toBeTruthy();
+  // expect(targetNode.classList.contains(addedClassName)).toBeTruthy();
+  expect(targetNode).toHaveClass(addedClassName);
 });
 
 test(`문서의 #app 노드에 'anything' 클래스 이름 설정이 가능하다.`, () => {
@@ -19,5 +20,5 @@ test(`문서의 #app 노드에 'anything' 클래스 이름 설정이 가능하�
   let addedClassName = 'anything';
 
   addClass(appNode, addedClassName);
-  expect(appNode.classList.contains(addedClassName)).toBeTruthy();
+  expect(appNode).toHaveClass(addedClassName);
 });
