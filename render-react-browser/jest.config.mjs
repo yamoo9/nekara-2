@@ -3,6 +3,6 @@ export default {
   transform: {
     '\\.[jt]sx?$': 'babel-jest',
   },
-  setupFilesAfterEnv: ['./.testSetup.mjs'],
+  setupFilesAfterEnv: ['./jestSetup.js'],
   testPathIgnorePatterns: ['/node_modules/'],
 };
