@@ -47,7 +47,7 @@
 }
 
 @media (min-width: 40em) {
-  #app {
+  .app {
     flex-flow: row;
     margin: 4rem;
   }

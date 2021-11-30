@@ -9,11 +9,9 @@
     <link rel="stylesheet" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" />
     <link rel="icon" href="//vectorlogo.zone/logos/reactjs/reactjs-icon.svg" />
     <link rel="stylesheet" href="./styles/main.css" />
-    <!-- <script type="module" src="./src/main.js"></script> -->
-    <!-- React UI 라이브러리 로드 -->
+    
     <script src="//unpkg.com/react/umd/react.development.js" crossorigin></script>
     <script src="//unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
-    <script src="//unpkg.com/react-dom/umd/react-dom-server.browser.development.js" crossorigin></script>
     <script src="//unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
   </head>
 
@@ -22,15 +20,22 @@
     <div id="root"></div>
 
     <script type="text/babel">
-      // JSX
-      // const AppContents, AppHeadline, AppDescription, TranslationButton, App;
-
       function AppHeadline() {
-        return <h1>선언형 프로그래밍</h1>
+        return <h1>Declarative programming</h1>
       }
 
       function AppDescription() {
-        return <p>선언형 프로그래밍은... 블라 블라 ...</p>
+        return (
+          <p>
+            In computer science, declarative programming is a programming paradigm—a style of
+            building the structure and elements of computer programs—that expresses the logic of
+            a computation without describing its control flow. Many languages that apply this style
+            attempt to minimize or eliminate side effects by describing what the program must accomplish
+            in terms of the problem domain, rather than describe how to accomplish it as a sequence of
+            the programming language primitives (the how being left up to the language's implementation).
+            This is in contrast with imperative programming, which implements algorithms in explicit steps.
+          </p>
+        )
       }
 
       function AppContents() {
@@ -42,11 +47,8 @@
         )
       }
 
-      // 일반 함수 vs. React 컴포넌트(함수)
-      // 인자 전달 vs. props 객체 전달
-      function TranslationButton(props) {
-        const {label: passivedlabel, size} = props;
-        let label = `${label} 번역`
+      function TranslationButton({label: receivedLabel, size}) {
+        let label = `${receivedLabel} 번역`
         return (
           <button
             className="button__translation"
@@ -72,61 +74,6 @@
 
       ReactDOM.render(<App />, document.getElementById('root'));
     </script>
-
-    <script type="text/babel">
-
-      function App() {
-        return (
-          <div className="app">
-            <div className="contents" lang="en">
-              <h1>Declarative programming</h1>
-              <p>
-                In computer science, declarative programming is a programming paradigm—a style of
-                building the structure and elements of computer programs—that expresses the logic of
-                a computation without describing its control flow. Many languages that apply this style
-                attempt to minimize or eliminate side effects by describing what the program must accomplish
-                in terms of the problem domain, rather than describe how to accomplish it as a sequence of
-                the programming language primitives (the how being left up to the language's implementation).
-                This is in contrast with imperative programming, which implements algorithms in explicit steps.
-              </p>
-            </div>
-            {/* JSX 주석 */}
-            <button className="button__translation" type="button" aria-label="영 → 한 번역" title="영 → 한 번역">
-              <svg width="24" height="24" viewBox="0 0 24 24">
-                <path d="M21 21h-1.713l-.658-1.846h-3l-.663 1.846h-1.659l3.04-8h1.603l3.05 8zm-2.814-3.12l-1.049-3.018-1.054 3.018h2.103zm2.814-5.88c.552 0 1 .449 1 1v8c0 .551-.448 1-1 1h-8c-.552 0-1-.449-1-1v-8c0-.551.448-1 1-1h8zm0-2h-8c-1.656 0-3 1.343-3 3v8c0 1.657 1.344 3 3 3h8c1.657 0 3-1.343 3-3v-8c0-1.657-1.343-3-3-3zm-15.855-2.114c.039.58.103 1.115.195 1.593-1.225.224-1.275-.984-.195-1.593zm8.855-4.886v5h-1c-.742 0-1.441.173-2.076.465-.195-.806-.783-1.53-1.68-1.964.078-.298.123-.522.167-.744l-1.35-.261c-.022.112-.063.327-.135.613-.455-.067-.94-.075-1.431-.026.011-.329.032-.653.06-.963h1.508v-1.278h-1.327c.065-.326.121-.521.176-.705l-1.316-.396c-.098.323-.178.64-.26 1.101h-1.504v1.278h1.341c-.036.414-.058.842-.064 1.275-1.48.544-2.109 1.581-2.109 2.521 0 1.11.876 2.086 2.261 1.96 1.72-.156 2.868-1.456 3.542-3.053.885.536.838 1.161.772 1.552-.965.913-1.575 2.196-1.575 3.625v1h-5c-1.656 0-3-1.343-3-3v-8c0-1.657 1.344-3 3-3h8c1.657 0 3 1.343 3 3zm-7.5 4.467c.328-.042.658-.05.97-.026-.214.476-.497.948-.857 1.319-.054-.396-.092-.83-.113-1.293z" />
-              </svg>
-            </button>
-          </div>
-        )
-      }
-
-      ReactDOM.render(
-        <App />,
-        document.getElementById('root')
-      )
-    </script>
-
-    <div id="guide" hidden>
-      <div class="contents" lang="en">
-        <h1>Declarative programming</h1>
-        <p>
-          In computer science, declarative programming is a programming paradigm—a style of
-          building the structure and elements of computer programs—that expresses the logic of
-          a computation without describing its control flow. Many languages that apply this style
-          attempt to minimize or eliminate side effects by describing what the program must accomplish
-          in terms of the problem domain, rather than describe how to accomplish it as a sequence of
-          the programming language primitives (the how being left up to the language's implementation).
-          This is in contrast with imperative programming, which implements algorithms in explicit steps.
-        </p>
-      </div>
-
-      <!-- React.createElement API를 사용해 React Element로 작성 -->
-      <button class="button__translation" type="button" aria-label="영 → 한 번역" title="영 → 한 번역">
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path d="M21 21h-1.713l-.658-1.846h-3l-.663 1.846h-1.659l3.04-8h1.603l3.05 8zm-2.814-3.12l-1.049-3.018-1.054 3.018h2.103zm2.814-5.88c.552 0 1 .449 1 1v8c0 .551-.448 1-1 1h-8c-.552 0-1-.449-1-1v-8c0-.551.448-1 1-1h8zm0-2h-8c-1.656 0-3 1.343-3 3v8c0 1.657 1.344 3 3 3h8c1.657 0 3-1.343 3-3v-8c0-1.657-1.343-3-3-3zm-15.855-2.114c.039.58.103 1.115.195 1.593-1.225.224-1.275-.984-.195-1.593zm8.855-4.886v5h-1c-.742 0-1.441.173-2.076.465-.195-.806-.783-1.53-1.68-1.964.078-.298.123-.522.167-.744l-1.35-.261c-.022.112-.063.327-.135.613-.455-.067-.94-.075-1.431-.026.011-.329.032-.653.06-.963h1.508v-1.278h-1.327c.065-.326.121-.521.176-.705l-1.316-.396c-.098.323-.178.64-.26 1.101h-1.504v1.278h1.341c-.036.414-.058.842-.064 1.275-1.48.544-2.109 1.581-2.109 2.521 0 1.11.876 2.086 2.261 1.96 1.72-.156 2.868-1.456 3.542-3.053.885.536.838 1.161.772 1.552-.965.913-1.575 2.196-1.575 3.625v1h-5c-1.656 0-3-1.343-3-3v-8c0-1.657 1.344-3 3-3h8c1.657 0 3 1.343 3 3zm-7.5 4.467c.328-.042.658-.05.97-.026-.214.476-.497.948-.857 1.319-.054-.396-.092-.83-.113-1.293z" />
-        </svg>
-      </button>
-    </div>
 
   </body>
 
