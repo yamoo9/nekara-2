@@ -1,0 +1,32 @@
+@import "./normalize.min.css";
+
+:root {
+  --color-primary: #415162;
+  --color-darkgray-10: rgba(50 50 50 / 10%);
+
+  overflow-y: visible;
+  font-size: 10px;
+}
+
+body {
+  font: 1.6rem/1.5 "Spoqa Han Sans Neo", "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
+  background: var(--color-darkgray-10);
+  color: var(--color-primary);
+}
+
+img {
+  vertical-align: middle;
+}
+
+abbr[title] {
+  cursor: help;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus:not(:focus-visible) {
+  outline: none;
+}

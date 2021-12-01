@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "virtual-dom",
+  "version": "0.0.1",
+  "description": "가상(Virtual) DOM 라이브러리",
+  "scripts": {
+    "start": "cross-env OPEN='/client' npm run dev",
+    "dev": "run-p watch:compile serve",
+    "serve": "node ./server/index.mjs",
+    "compile": "babel ./client/src -d ./client/dist",
+    "watch:compile": "npm run compile -- -w",
+    "clear": "rimraf -rf ./client/dist"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-react-jsx": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.2.0",
+    "live-server": "^1.1.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  }
+}
