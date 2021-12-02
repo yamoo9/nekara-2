@@ -7,7 +7,7 @@ const getIconShapePath = (shape) =>
 
 export function IconButton({ type, shape, label, color }) {
   return (
-    <button type={type} aria-label={label}>
+    <button type={type} className="IconButton" aria-label={label}>
       <svg width={30} height={30} viewBox="0 0 30 30" fill="none">
         <path
           fillRule="evenodd"

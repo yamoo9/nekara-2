@@ -1,14 +1,12 @@
-import { Logo } from './components/index.js';
+import { Logo, IconButton } from './components/index.js';
 
 const { React, ReactDOM } = window;
 
 ReactDOM.render(
   <div className="more-shoes-shop">
-    {/* normal version */}
     <Logo />
-    {/* variation version */}
-    <Logo label="더더욱 더~~" />
-    <Logo textColor="salmon" dotColor="darkgreen" />
+    <IconButton />
+    <IconButton shape="cart" />
   </div>,
   document.getElementById('root')
 );
