@@ -11,7 +11,7 @@ export default {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
 
   // 각 테스트 전에 테스트 프레임워크를 구성하거나 설정하기 위해 일부 코드를 실행하는 모듈의 경로 목록
-  setupFilesAfterEnv: ['./jest.setup.cjs'],
+  setupFilesAfterEnv: ['./jest.setup.js'],
 
   // 테스트에 사용할 테스트 환경
   testEnvironment: 'jsdom',
