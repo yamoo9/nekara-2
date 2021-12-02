@@ -1,0 +1,42 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "not-suitable-dev-env",
+  "version": "0.0.1",
+  "description": "React 앱 개발에 적합하지 않은 환경",
+  "scripts": {
+    "start": "cross-env OPEN='/client' npm run dev",
+    "dev": "run-p watch:compile serve",
+    "serve": "node ./server/index.mjs",
+    "compile": "babel ./client/src -d ./client/dist",
+    "lint": "eslint ./ --ignore-path .gitignore",
+    "format": "prettier --write ./ --ignore-path .gitignore",
+    "test": "jest",
+    "watch": "run-p watch:**",
+    "watch:compile": "npm run compile -- --watch",
+    "watch:lint": "esw ./ --watch --color --ignore-path .gitignore",
+    "watch:format": "onchange ./ -- npm run format {{changed}}",
+    "watch:test": "npm test -- --watchAll",
+    "clear": "rimraf -rf ./client/dist"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-react-jsx": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@types/jest": "^27.0.2",
+    "babel-jest": "^27.3.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.2.0",
+    "eslint-plugin-jest": "^25.2.4",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-watch": "^8.0.0",
+    "jest": "^27.3.1",
+    "live-server": "^1.1.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2"
+  }
+}
