@@ -6,16 +6,23 @@
   "description": "웹 브라우저 환경에서 React 앱 렌더링",
   "scripts": {
     "start": "cross-env OPEN='/client' npm run dev",
-    "dev": "node ./server/index.mjs",
+    "dev": "run-p watch:compile serve",
+    "serve": "node ./server/index.mjs",
     "lint": "eslint ./ --ignore-path .gitignore",
     "format": "prettier --write ./ --ignore-path .gitignore",
+    "compile": "babel ./client/src -d ./client/dist",
+    "test": "jest",
     "watch": "run-p watch:**",
     "watch:lint": "esw ./ --watch --color --ignore-path .gitignore",
     "watch:format": "onchange ./ -- npm run format {{changed}}",
-    "test": "jest --watchAll"
+    "watch:compile": "npm run compile -- --watch",
+    "watch:test": "npm t -- --watchAll",
+    "clear": "rimraf -rf ./client/dist"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-react-jsx": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@types/jest": "^27.0.2",
@@ -29,6 +36,7 @@
     "live-server": "^1.1.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2"
   }
 }

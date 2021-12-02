@@ -8,5 +8,8 @@
         "modules": false
       }
     ]
+  ],
+  "plugins": [
+    "@babel/plugin-transform-react-jsx"
   ]
 }
