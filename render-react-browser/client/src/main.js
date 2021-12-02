@@ -1,5 +1,5 @@
-import App from './components/App/index.js';
+// MORE. 컴포넌트 설계
 
-const { React, ReactDOM } = window;
-
-ReactDOM.render(<App />, document.getElementById('root'));
+// Logo
+// Button
+// CardLink
