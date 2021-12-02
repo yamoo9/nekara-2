@@ -7,9 +7,9 @@ React 애플리케이션을 웹 브라우저 환경에서 렌더링
 - [x]  ReactDOM
 - [x]  JSX
 - [x]  Babel Standalone
-- [ ]  Babel Polyfill
-- [ ]  React Component
-- [ ]  Module Programming (with Babel CLI)
+- [x]  Babel Polyfill → core.js / regenerator-runtime
+- [x]  React Component (functional)
+- [x]  Module Programming (with Babel CLI)
 
 <br/>
 
