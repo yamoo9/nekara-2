@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   globals: {
-    jest: true
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -30,5 +30,6 @@ module.exports = {
   plugins: ['react', 'jest'],
   rules: {
     'no-unused-vars': 'warn',
+    'react/prop-types': 'off',
   },
 };
