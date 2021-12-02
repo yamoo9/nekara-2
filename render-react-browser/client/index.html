@@ -13,6 +13,9 @@
     <script src="//unpkg.com/react/umd/react.development.js" crossorigin></script>
     <script src="//unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
     <script src="//unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <!-- <script src="//unpkg.com/babel-polyfill/dist/polyfill.min.js" crossorigin></script> -->
+    <script src="//unpkg.com/core-js-bundle/index.js" crossorigin></script>
+    <script src="//unpkg.com/regenerator-runtime/runtime.js" crossorigin></script>
   </head>
 
   <body>
@@ -20,6 +23,26 @@
     <div id="root"></div>
 
     <script type="text/babel">
+
+      const numbers = [101, 201, 301];
+
+      // Array.prototype.find method
+      let findedTwoZeroOne = numbers.find(n => n === 201);
+
+      console.log({findedTwoZeroOne});
+
+      // Promise
+      function delay(timeout = 1000) {
+        return new Promise((resolve) => {
+          window.setTimeout(() => resolve(), timeout);
+        });
+      }
+
+      delay().then(() => {
+        console.log('call out');
+      });
+
+
       function AppHeadline() {
         return <h1>Declarative programming</h1>
       }
