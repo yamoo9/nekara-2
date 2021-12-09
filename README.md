@@ -1,24 +1,38 @@
 ###### 네카라쿠배 2기
-# React 개발 구성 템플릿
 
-직접 구성한 React 개발 환경 구성 템플릿을 사용해 프로젝트 스캐폴딩(Scafolding)
+# JSX 인 액션
 
-## [degit](https://github.com/Rich-Harris/degit)
+- 조건부 렌더링
+    - 문
+    - 식
+        - 3항식
+        - 논리 연산자
+        - null 병합 연산자
+        - 옵셔널 체이닝
+- 리스트 렌더링
+    - 배열
+    - 객체
 
-degit 명령을 사용하면 특정 Git 저장소의 최신 커밋을 찾아 tar 파일을 다운로드 합니다.  
-저장소의 `.git` 디렉토리를 제외하고 다운로드할 수 있어 더욱 빠른 다운로드가 가능합니다.
+## 컴파운드 컴포넌트
 
-```sh
-degit user/repo#branch
+화살표 함수식을 사용할 경우 컴포넌트 이름이 없기에
+`displayName` prop을 사용해 React 개발 도구에 
+표시될 컴포넌트 이름을 지정할 수 있습니다.
+
+```jsx
+컴포넌트.하위컴포넌트 = () => {
+  // return JSX
+}
+
+컴포넌트.하위컴포넌트.displayName = '하위컴포넌트';
 ```
 
-사용 예
+반면, 함수 선언을 사용하면 함수 이름을 명시할 수 있어 
+별도로 `displayName` 속성을 설정하지 않아도 
+React 개발 도구에 표시될 컴포넌트 이름을 지정할 수 있습니다.
 
-```sh
-npx degit yamoo9/react-nklcb-2nd#template
-```
-
-```sh
-# clone-react-app 저장소
-npx degit yamoo9/cra 프로젝트_이름
+```jsx
+컴포넌트.하위컴포넌트 = function 하위컴포넌트() {
+  // return JSX
+}
 ```
