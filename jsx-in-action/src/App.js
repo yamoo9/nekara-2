@@ -1,12 +1,18 @@
 /* eslint-disable no-unused-vars */
-
-import { EmojiOops, PrettyPrintCode } from 'components';
+import React from 'react';
+import { EmojiOops, PrettyPrintCode } from './components';
 
 /* -------------------------------------------------------------------------- */
 
 let error = null;
 
 // 오류 메시지를 포함한 객체를 추가해보세요.
+error = {
+  message: '이런!! 네트워크 장애가 발생했습니다. ㅠㅡㅠ',
+  log() {
+    console.error(this.message);
+  },
+};
 
 /* -------------------------------------------------------------------------- */
 
@@ -19,22 +25,25 @@ const ConditionalRendering = () => {
 
   // JSX 조건부 렌더링: if 문
   // 오류가 존재하면 렌더링 되도록 코드를 작성합니다.
-  const displayErrorState = (
-    <div className="container">
-      <h1 className="headline">
-        <EmojiOops height={200} />
-        {/* 오류 메시지가 출력되도록 코드를 변경합니다. */}
-        {error}
-      </h1>
-    </div>
-  );
-
-  return (
-    <div className="container">
-      <h1 className="headline">React 조건부 렌더링</h1>
-      <p>오류가 존재하면 렌더링 되도록 코드를 작성합니다.</p>
-    </div>
-  );
+  if (error) {
+    const displayErrorState = (
+      <div className="container">
+        <h1 className="headline">
+          <EmojiOops height={200} />
+          {/* 오류 메시지가 출력되도록 코드를 변경합니다. */}
+          {error.message}
+        </h1>
+      </div>
+    );
+    return displayErrorState;
+  } else {
+    return (
+      <div className="container">
+        <h1 className="headline">React 조건부 렌더링</h1>
+        <p>오류가 존재하면 렌더링 되도록 코드를 작성합니다.</p>
+      </div>
+    );
+  }
 };
 
 /* -------------------------------------------------------------------------- */
