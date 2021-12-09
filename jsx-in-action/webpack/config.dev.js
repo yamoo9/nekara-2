@@ -9,6 +9,10 @@ const devConfig = {
         exclude: /(node_modules|dist)/,
         use: 'babel-loader',
       },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
 };
