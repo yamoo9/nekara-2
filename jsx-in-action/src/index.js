@@ -1,3 +1,6 @@
+// import Global CSS Style
+import './styles/global.css';
+
 import React, { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { ListRedering } from './App';
