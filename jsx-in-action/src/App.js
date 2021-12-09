@@ -1,19 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { Fragment as Template } from 'react';
 import { EmojiOops, List, PrettyPrintCode } from './components';
-// import db from './api/db.json';
+import { isObject, isArray } from './utils';
 
 /* -------------------------------------------------------------------------- */
 
 let error = null;
-
-// 오류 메시지를 포함한 객체를 추가해보세요.
-// error = {
-//   message: '이런!! 네트워크 장애가 발생했습니다. ㅠㅡㅠ',
-//   log() {
-//     console.error(this.message);
-//   },
-// };
 
 /* -------------------------------------------------------------------------- */
 
@@ -39,9 +31,6 @@ const ConditionalRendering = () => {
 };
 
 /* -------------------------------------------------------------------------- */
-
-// `api/db.json` 데이터에서 `navigation.items` 데이터를 화면에 출력해보세요.
-// `list` 매개 변수를 순환해 아이템 리스트를 반환하는 `renderList` 함수를 만들어 활용해봅니다.
 
 const db = require('./api/db.json');
 
@@ -78,12 +67,26 @@ const ListRedering = () => {
 
       {/* 객체 리스트 렌더링 */}
       <dl className="descriptionList">
+        {Object.entries(db).map(([key, value]) => {
+          return (
+            <Template key={key}>
+              <dt>{key}</dt>
+              <dd>
+                {isObject(value) || isArray(value) ? (
+                  <PrettyPrintCode code={value} />
+                ) : (
+                  value
+                )}
+              </dd>
+            </Template>
+          );
+        })}
         {/* 웹 표준을 준수해 설명 목록을 화면에 출력해봅니다. */}
         {/* `db` 객체의 "속성", "값" 쌍을 순환하여 리스트 렌더링 해보세요. */}
         {/* 값의 유형이 객체 또는 배열인 경우, 코드가 화면에 출력되도록 설정합니다. */}
         {/* `isArray`, `isObject` 유틸리티 함수를 만들어 활용하세요. */}
         {/* 코드를 화면에 출력할 때는 <PrettyPrintCode /> 컴포넌트를 활용합니다. (`code` 속성) */}
-        <PrettyPrintCode code={db} />
+        {/* <PrettyPrintCode code={db} /> */}
       </dl>
     </div>
   );
