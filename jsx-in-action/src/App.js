@@ -23,27 +23,18 @@ const ConditionalRendering = () => {
 
   error && typeof error.log === 'function' && error.log();
 
-  // JSX 조건부 렌더링: if 문
-  // 오류가 존재하면 렌더링 되도록 코드를 작성합니다.
-  if (error) {
-    const displayErrorState = (
-      <div className="container">
-        <h1 className="headline">
-          <EmojiOops height={200} />
-          {/* 오류 메시지가 출력되도록 코드를 변경합니다. */}
-          {error.message}
-        </h1>
-      </div>
-    );
-    return displayErrorState;
-  } else {
-    return (
-      <div className="container">
-        <h1 className="headline">React 조건부 렌더링</h1>
-        <p>오류가 존재하면 렌더링 되도록 코드를 작성합니다.</p>
-      </div>
-    );
-  }
+  return (
+    <div className="container">
+      <h1 className="headline">
+        {!error ? 'React 조건부 렌더링' : <EmojiOops height={200} />}
+      </h1>
+      <p className={!error ? null : 'error-message'}>
+        {!error
+          ? '오류가 존재하면 렌더링 되도록 코드를 작성합니다.'
+          : error.message}
+      </p>
+    </div>
+  );
 };
 
 /* -------------------------------------------------------------------------- */
