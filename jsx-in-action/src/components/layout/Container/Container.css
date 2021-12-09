@@ -1,0 +1,8 @@
+.container {
+  font: 300 1rem/1.5 'Spoqa Hans Sans', sans-serif;
+}
+
+.container p {
+  margin-top: 0.4rem;
+  text-align: center;
+}

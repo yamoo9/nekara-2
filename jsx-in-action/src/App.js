@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment as Template } from 'react';
-import { EmojiOops, List, PrettyPrintCode } from './components';
+import { EmojiOops, List, PrettyPrintCode, Container } from './components';
 import { isObject, isArray } from './utils';
 
 /* -------------------------------------------------------------------------- */
@@ -50,7 +50,7 @@ const renderList = (list) => {
 
 const ListRedering = () => {
   return (
-    <div className="container">
+    <Container>
       <h1 className="headline">React 리스트 렌더링 (배열)</h1>
 
       {/* 배열 리스트 렌더링 */}
@@ -88,7 +88,7 @@ const ListRedering = () => {
         {/* 코드를 화면에 출력할 때는 <PrettyPrintCode /> 컴포넌트를 활용합니다. (`code` 속성) */}
         {/* <PrettyPrintCode code={db} /> */}
       </dl>
-    </div>
+    </Container>
   );
 };
 
