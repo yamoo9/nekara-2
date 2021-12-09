@@ -1,0 +1,16 @@
+.headline {
+  --font-size: 2.4rem;
+
+  display: flex;
+  margin-bottom: 0;
+  justify-content: center;
+  align-items: center;
+  font-weight: inherit;
+  font-size: var(--font-size);
+}
+
+.headline img {
+  height: var(--font-size);
+  margin-top: -8px;
+  margin-right: 8px;
+}

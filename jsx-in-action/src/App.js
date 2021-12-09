@@ -1,7 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment as Template } from 'react';
-import { EmojiOops, List, PrettyPrintCode, Container } from './components';
 import { isObject, isArray } from './utils';
+import {
+  EmojiOops,
+  List,
+  PrettyPrintCode,
+  Container,
+  Headline,
+  GlobalNav,
+  DescList,
+} from './components';
 
 /* -------------------------------------------------------------------------- */
 
@@ -51,10 +59,10 @@ const renderList = (list) => {
 const ListRedering = () => {
   return (
     <Container>
-      <h1 className="headline">React 리스트 렌더링 (배열)</h1>
+      <Headline>React 리스트 렌더링 (배열)</Headline>
 
       {/* 배열 리스트 렌더링 */}
-      <nav className="globalNavigation">
+      <GlobalNav>
         {/* 웹 표준을 준수해 비순차 목록을 화면에 출력해봅니다. */}
         {/* renderList(list) 함수를 실행해 리스트 렌더링 처리해봅니다. */}
         {/* <ul>{renderList(list)}</ul> */}
@@ -63,10 +71,10 @@ const ListRedering = () => {
             <List.Item key={index} link={item.link} text={item.text} />
           ))}
         </List>
-      </nav>
+      </GlobalNav>
 
       {/* 객체 리스트 렌더링 */}
-      <dl className="descriptionList">
+      <DescList>
         {Object.entries(db).map(([key, value]) => {
           return (
             <Template key={key}>
@@ -87,7 +95,7 @@ const ListRedering = () => {
         {/* `isArray`, `isObject` 유틸리티 함수를 만들어 활용하세요. */}
         {/* 코드를 화면에 출력할 때는 <PrettyPrintCode /> 컴포넌트를 활용합니다. (`code` 속성) */}
         {/* <PrettyPrintCode code={db} /> */}
-      </dl>
+      </DescList>
     </Container>
   );
 };

@@ -1,0 +1,25 @@
+.descriptionList {
+  width: 30rem;
+  margin: 30px auto;
+}
+
+.descriptionList dt {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0px;
+}
+
+.descriptionList dd {
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+
+.descriptionList pre {
+  overflow: auto;
+  resize: vertical;
+  border: 1px solid #e6e6e6;
+  height: 10rem;
+  font-size: 11px;
+  background: #111;
+  color: #fff;
+}

@@ -1,0 +1,13 @@
+.globalNavigation ul {
+  margin: 1rem 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.globalNavigation a {
+  padding: 0.3em 0.6em;
+  text-decoration: none;
+  color: #4a30e9;
+}
