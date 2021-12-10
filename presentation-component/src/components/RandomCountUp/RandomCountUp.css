@@ -1,0 +1,28 @@
+.randomCountUp {
+  --color-background: #150f1f;
+  --color-forground: #f2f2f5;
+
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-weight: 100;
+  font-size: 50vh;
+  line-height: 1;
+  background: var(--color-background);
+  color: var(--color-forground);
+}
+
+.randomCountUp output {
+  user-select: none;
+  cursor: inherit;
+  animation: wiggle steps(3) 600ms infinite alternate;
+}
+
+@keyframes wiggle {
+  0% { opacity: 1; }
+  33.3333% { opacity: 0.4; }
+  66.6666% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
