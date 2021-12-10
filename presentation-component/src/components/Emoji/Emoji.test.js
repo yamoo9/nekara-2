@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Emoji } from './Emoji';
 
 let imageNode = null;
 let wrapperNode = null;
 let props = {};
 
-beforeEach(() => {
+beforeAll(() => {
   props.source = '/assets/emoji/oops.png';
   props.label = '웁스!!';
 
@@ -17,6 +17,11 @@ beforeEach(() => {
 });
 
 describe('Emoji 컴포넌트', () => {
+  test('figure, img 요소 모두 화면에 표시되어 한다.', () => {
+    expect(wrapperNode).toBeInTheDocument();
+    expect(imageNode).toBeVisible();
+  });
+
   test('래퍼 요소는 figure이고, 내부에는 img 요소가 포함되어 있다.', () => {
     expect(wrapperNode.nodeName.toLowerCase()).toBe('figure');
     expect(wrapperNode).toContainElement(imageNode);
@@ -36,16 +41,17 @@ describe('Emoji 컴포넌트', () => {
     expect(imageNode.getAttribute('alt')).toBe(imageNode.getAttribute('title'));
   });
 
-  test('figure, img 요소 모두 화면에 표시되어 한다.', () => {
-    expect(wrapperNode).toBeVisible();
-    expect(imageNode).toBeVisible();
+  test('컴포넌트에 "alpha beta gamma zeta" 클래스 prop을 설정하면 모두 반영된다.', () => {
+    let classNames = 'alpha beta gamma zeta';
+    const { getByTestId } = render(<Emoji className={classNames} {...props} />);
+    const figureNode = getByTestId('wrapper');
+    expect(figureNode.className).toBe(`emoji ${classNames}`);
   });
 
-  test('컴포넌트에 alpha, beta, gamma, zeta 클래스 prop을 설정하면 모두 반영된다.', () => {
-    let classNames = 'alpha beta gamma zeta';
-    const { getByTestId } = render(<Emoji {...props} className={classNames} />);
+  test('컴포넌트에 "" 클래스 prop을 설정하면 "emoji"이다.', () => {
+    let classNames = '';
+    const { getByTestId } = render(<Emoji className={classNames} {...props} />);
     const figureNode = getByTestId('wrapper');
-
-    expect(figureNode.className).toBe(`emoji ${classNames}`);
+    expect(figureNode.className).toBe('emoji');
   });
 });
