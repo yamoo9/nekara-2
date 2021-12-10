@@ -1,8 +1,13 @@
 import React from 'react';
+import { classNames } from '../../utils';
 
-export function Emoji({ source, label, className }) {
+export function Emoji({ source, label, className, ...restProps }) {
   return (
-    <figure className={`emoji ${className}`.trim()} data-testid="wrapper">
+    <figure
+      className={classNames('emoji', className)}
+      data-testid="wrapper"
+      {...restProps}
+    >
       <img src={source} alt={label} title={label} />
     </figure>
   );
