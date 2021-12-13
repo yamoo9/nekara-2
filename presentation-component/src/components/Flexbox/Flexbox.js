@@ -1,3 +1,4 @@
+// 가이드: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 import React from 'react';
 import { Flexbox } from './flexbox';
 
