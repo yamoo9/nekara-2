@@ -1,5 +1,6 @@
 import React from 'react';
 import { Emoji } from '../../components';
+import oops from '../../assets/emoji/oops.png';
 
 export default function App({ greetingMessage }) {
   return (
@@ -8,7 +9,7 @@ export default function App({ greetingMessage }) {
       <Emoji
         id="emoji-id"
         aria-label="emoji-label"
-        source="/assets/emoji/oops.png"
+        source={oops}
         label="웁스!!"
       />
     </div>
