@@ -12,5 +12,6 @@ export const classNames = (...classNames) => {
       return className;
     })
     .join(' ')
+    .replace(/\s+/g, ' ')
     .trim();
 };
