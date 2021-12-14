@@ -2,13 +2,10 @@ import './styles/global.css';
 import { StrictMode } from 'react';
 import { render } from 'react-dom';
 import App from './app/App';
-import { AppHeader } from './components'
 
 render(
   <StrictMode>
-    <App>
-      <AppHeader />
-    </App>
+    <App></App>
   </StrictMode>,
   document.getElementById('root')
 );
