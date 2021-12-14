@@ -25,6 +25,10 @@ function define(componentName, template) {
       }
     }
 
+    // [미션]
+    // 프로그래밍 방식으로 업데이트 된 속성을 감지하여
+    // 각 속성 값을 컴포넌트의 props에 업데이트 합니다.
+
     disconnectedCallback() {
       console.log('커스텀 요소가 문서에서 제거되었습니다.');
     }
