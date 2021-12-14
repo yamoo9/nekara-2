@@ -1,0 +1,53 @@
+:root {
+  --space: 5rem;
+  --heading-base: 14px;
+  --heading-ratio: 1.618;
+  --heading-calc: calc(var(--heading-base) * var(--heading-ratio));
+  background: rgba(30 30 30 / 5%);
+}
+
+body {
+  margin: var(--space);
+  padding: calc(var(--space) / 2);
+  font: 1rem/1.5 "Spoqa Han Sans Neo", sans-serif;
+  background: #fff;
+  min-height: calc(100vh - var(--space) * 2 - var(--space));
+}
+
+.grid {
+  display: grid;
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.video {
+  height: calc(var(--space) * 11);
+  border: 1px solid rgba(0 0 0 / 20%);
+  vertical-align: middle;
+}
+
+.demo {
+  margin-bottom: calc(var(--space) / 2);
+}
+
+.headline {
+  margin-top: 0;
+  font-weight: 300;
+}
+.level-1 {
+  font-size: calc(var(--heading-calc) * 1.5);
+  margin-bottom: calc(var(--space) / 2);
+}
+.level-2 {
+  font-size: calc(var(--heading-calc) * 1.25);
+}
+.level-3 {
+  font-size: calc(var(--heading-calc) * 1);
+}
+.level-4 {
+  font-size: calc(var(--heading-calc) * 0.75);
+}

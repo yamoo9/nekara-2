@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>웹 컴포넌트 기술 사양</title>
+    <link rel="stylesheet" href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <script type="module" src="/components/index.js"></script>
+  </head>
+
+  <body>
+
+    <div class="grid">
+      <div class="item">
+        <h1 class="headline level-1"><b>EuidCounter</b> 웹 표준 컴포넌트</h1>
+
+        <div class="demo">
+          <h2 class="headline level-3">props 없음 (기본 값: { min: 0, count: 0, step: 1, max: 10000 })</h2>
+          <euid-counter></euid-counter>
+        </div>
+
+        <div class="demo">
+          <h2 class="headline level-3">props: { count: 9 }</h2>
+          <euid-counter count="9"></euid-counter>
+        </div>
+
+        <div class="demo">
+          <h2 class="headline level-3">props: { count: 7, step: 3 }</h2>
+          <euid-counter count="7" step="3"></euid-counter>
+        </div>
+
+        <div class="demo">
+          <h2 class="headline level-3">props: { count: 4, min: 2 }</h2>
+          <euid-counter min="2" count="4"></euid-counter>
+        </div>
+
+        <div class="demo">
+          <h2 class="headline level-3">props: { count: 14, step: 3, max: 24 }</h2>
+          <euid-counter count="12" step="3" max="24"></euid-counter>
+        </div>
+
+        <div class="demo">
+          <h2 class="headline level-3">props: { count: 3, min: 1, max: 10 }</h2>
+          
+          <script>
+            let componentName = 'euid-counter';
+
+            customElements.whenDefined(componentName)
+              .then(() => {
+                const counterNode = document.createElement(componentName);
+                counterNode.setAttribute('count', 3);
+                counterNode.setAttribute('min', 1);
+                counterNode.setAttribute('max', 10);
+
+                document
+                  .querySelector('.demo:last-of-type')
+                  .append(counterNode);
+              });
+          </script>
+        </div>
+      </div>
+      <div class="item">
+        <video class="video" src="/assets/emart-counter.mp4" loop muted autoplay>
+          <a href="/assets/emart-counter.mp4">카운터 컴포넌트 시연 영상 다운로드</a>
+        </video>
+      </div>
+    </div>
+
+  </body>
+
+</html>
