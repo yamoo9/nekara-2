@@ -44,7 +44,7 @@ export class AppHeader extends Component {
     if (nextProps.brand.label !== this.props.brand.label) {
       // render() 미실행
       console.log('부모 컴포넌트의 리 렌더링 요청을 묵살한다.');
-      return false;
+      // return false;
     }
 
     // 상황 1.
@@ -107,7 +107,19 @@ export class AppHeader extends Component {
     );
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    // DOM 노드에 접근 후, 정보 값을 읽기
+    // 읽은 정보 값을 스냅샷 반환
+    return {
+      name: 'this is snapshot',
+      version: '0.1.2'
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot) {
+      console.log({snapshot});
+    }
     // console.log('컴포넌트가 업데이트 되었습니다!');
     // console.log('이전 props 또는 state', { prevProps, prevState });
     // console.log('현재 props 또는 state', {
