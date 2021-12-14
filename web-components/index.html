@@ -44,11 +44,24 @@
 
         <div class="demo">
           <h2 class="headline level-3">props: { count: 3, min: 1, max: 10 }</h2>
-          <euid-counter min="1" count="3" max="10"></euid-counter>
+          <!-- <euid-counter min="1" count="3" max="10"></euid-counter> -->
           <script>
             // [미션]
             // 위에 HTML로 작성된 euid-counter 커스텀 요소를 프로그래밍 방식으로 생성한 후,
             // .demo 요소 내부에 마운트 하여 컴포넌트를 렌더링 합니다.
+
+            // 컴포넌트가 존재한다면? 컴포넌트를 렌더링 하자.
+            let componentName = 'euid-counter';
+            customElements.whenDefined(componentName)
+              .then(() => {
+                const customElement = document.createElement(componentName);
+                customElement.setAttribute('min', 1);
+                customElement.setAttribute('count', 3);
+                customElement.setAttribute('max', 10);
+                document.querySelector('.demo:last-of-type')
+                  .append(customElement);
+              });
+
           </script>
         </div>
       </div>

@@ -1,6 +1,6 @@
 class EuidButton extends HTMLElement {
   constructor() {
-    super();
+    super(); // this
     this.attachShadow({ mode: 'open' });
     this._rendered = false;
     this._attrs = {};
