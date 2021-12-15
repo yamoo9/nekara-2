@@ -2,8 +2,6 @@ import './App.css';
 import { Component } from 'react';
 import { AppHeader } from 'components';
 
-// stateless component → stateful component
-// functional → class
 export default class App extends Component {
   state = {
     isShowHeader: true,
@@ -16,9 +14,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.isShowHeader
-          ? <AppHeader brand={this.state.brand} />
-          : '이런... 자식 노드가 없습니다.'}
+        {this.state.isShowHeader ? (
+          <AppHeader brand={this.state.brand} />
+        ) : (
+          '이런... 자식 노드가 없습니다.'
+        )}
       </div>
     );
   }
@@ -28,9 +28,9 @@ export default class App extends Component {
       this.setState({
         brand: {
           ...this.state.brand,
-          label: '현 시점 Front-end 프레임워크 최강자! 리엑트'
-        }
-      })
+          label: '현 시점 Front-end 프레임워크 최강자! 리엑트',
+        },
+      });
     }, 4000);
   }
 }

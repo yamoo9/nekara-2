@@ -53,7 +53,6 @@ export class AppHeader extends Component {
 
     // render() 실행
     return true;
-
   }
 
   render() {
@@ -112,13 +111,13 @@ export class AppHeader extends Component {
     // 읽은 정보 값을 스냅샷 반환
     return {
       name: 'this is snapshot',
-      version: '0.1.2'
+      version: '0.1.2',
     };
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (snapshot) {
-      console.log({snapshot});
+      console.log({ snapshot });
     }
     // console.log('컴포넌트가 업데이트 되었습니다!');
     // console.log('이전 props 또는 state', { prevProps, prevState });
