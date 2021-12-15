@@ -33,7 +33,8 @@ function define(componentName, template) {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-      this.props[name] = newValue;
+      this.props[name] = Number(newValue);
+      name === 'count' && (this.state.count = this.props.count);
     }
 
     disconnectedCallback() {
@@ -46,10 +47,14 @@ function define(componentName, template) {
       let min = Number(this.getAttribute('min') ?? 0);
       let max = Number(this.getAttribute('max') ?? 10000);
 
-      if (count < min) { count = min; } 
-      if (count > max) { count = max; }
+      if (count < min) {
+        count = min;
+      }
+      if (count > max) {
+        count = max;
+      }
 
-      this.props = { count, step, min, max }; 
+      this.props = { count, step, min, max };
     }
 
     setState(newState) {
