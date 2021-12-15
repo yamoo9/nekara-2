@@ -1,0 +1,44 @@
+.iconButton {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 89px;
+  min-height: 30px;
+  border: 0;
+  padding: 0.75em 1em;
+  background: #fff;
+  line-height: 1;
+  font-size: 0.75rem;
+  box-shadow: 0px 4px 4px #c5c7d8;
+  border-radius: 30px;
+  transition: all 0.2s ease-out;
+}
+
+.iconButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 8px #d7dae8;
+}
+
+.iconButton:active {
+  transition-duration: 0.05s;
+  transform: scale(1);
+}
+
+.iconButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(136, 139, 165, 0.5);
+}
+
+.iconButton:focus:not(:focus-visible) {
+  box-shadow: 0px 4px 4px #DBDDF0;
+}
+
+.iconButton:disabled {
+  cursor: not-allowed;
+  color: #ADAEB6;
+}
+
+.iconButton:disabled:hover {
+  transform: none;
+}

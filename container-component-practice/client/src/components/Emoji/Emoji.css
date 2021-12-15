@@ -1,0 +1,11 @@
+.emoji {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+}
+
+.emoji img {
+  width: auto;
+  height: 100%;
+}

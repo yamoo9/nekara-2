@@ -1,0 +1,34 @@
+{
+  "gateway": [
+    {
+      "id": "gateway-01",
+      "title": ["SK의 다양한 소식을", "전합니다"],
+      "link": {
+        "text": "SK뉴스",
+        "cheon": "로",
+        "href": "http://sk.com/ko/media/news.jsp"
+      },
+      "cover": "laptop.jpg"
+    },
+    {
+      "id": "gateway-02",
+      "title": ["따로 또 같이", "우리는 SK 입니다"],
+      "link": {
+        "text": "계열사",
+        "cheon": "로",
+        "href": "http://sk.com/ko/about/affiliates.jsp"
+      },
+      "cover": "city-of-night.jpg"
+    },
+    {
+      "id": "gateway-03",
+      "title": ["사람이 자원인 나라", "그 사람을 키우는 SK"],
+      "link": {
+        "text": "채용",
+        "cheon": "으로",
+        "href": "http://sk.com/ko/careers/careers.jsp"
+      },
+      "cover": "presentation.jpg"
+    }
+  ]
+}

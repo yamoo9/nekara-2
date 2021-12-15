@@ -1,0 +1,7 @@
+{
+  "cards": [
+    { "id": "card-vanilla", "text": "Vanilla Tilt Card" },
+    { "id": "card-jquery", "text": "jQuery Tilt Card" },
+    { "id": "card-react", "text": "React Tilt Card" }
+  ]
+}

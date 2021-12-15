@@ -1,0 +1,25 @@
+body {
+  --color: #3733d4;
+  margin: 4rem;
+  color: var(--color);
+}
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 400;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.6rem;
+}
+
+nav ul {
+  padding-left: 1rem;
+}
+
+nav li {
+  margin-bottom: 0.3rem; 
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color);
+}
