@@ -14,12 +14,24 @@ export default class App extends Component {
   };
 
   render() {
-    const { brand, isShowHeader } = this.state;
+    const { brand, isShowHeader, packageInfo } = this.state;
 
     return (
       <div className="App">
         {isShowHeader ? (
-          <AppHeader brand={brand} />
+          <>
+            <AppHeader brand={brand} />
+            {packageInfo.length > 0
+              ? packageInfo.map(({ package: { name, description } }) => {
+                  return (
+                    <div key={name}>
+                      <div>name: {name}</div>
+                      <div>description: {description}</div>
+                    </div>
+                  );
+                })
+              : null}
+          </>
         ) : (
           '이런... 자식 노드가 없습니다.'
         )}

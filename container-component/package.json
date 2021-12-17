@@ -1,5 +1,6 @@
 {
   "name": "container-component",
+  "proxy": "https://registry.npmjs.org",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
