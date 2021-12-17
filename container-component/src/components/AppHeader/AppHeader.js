@@ -42,7 +42,7 @@ export class AppHeader extends Component {
   render() {
     const { learnLink } = this.state;
     const {
-      brand: { label, className },
+      brand, // { label, className },
     } = this.props;
 
     return (

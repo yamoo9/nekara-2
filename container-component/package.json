@@ -5,6 +5,7 @@
   "dependencies": {
     "jquery": "^3.6.0",
     "react": "^17.0.2",
+    "react-app-polyfill": "^3.0.0",
     "react-dom": "^17.0.2",
     "web-vitals": "^1.1.2"
   },
@@ -33,14 +34,15 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
+      "> 5% in KR",
       "not dead",
-      "not op_mini all"
+      "ie 11"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "last 1 edge version"
     ]
   }
 }
