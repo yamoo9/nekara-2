@@ -5,11 +5,13 @@ import 'styles/global.css';
 import './reportWebVitals';
 import { StrictMode } from 'react';
 import { render } from 'react-dom';
-import App from 'components';
+import App, { ErrorBoundary } from 'components';
 
 render(
   <StrictMode>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </StrictMode>,
   document.getElementById('root')
 );
