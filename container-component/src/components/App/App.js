@@ -1,6 +1,7 @@
 import './App.css';
 import { Component } from 'react';
 import { AppHeader } from 'components';
+import { queryNpmRegistry } from 'utils';
 
 export default class App extends Component {
   state = {
@@ -9,6 +10,7 @@ export default class App extends Component {
       label: 'React',
       className: 'App-logo',
     },
+    packageInfo: [],
   };
 
   render() {
@@ -23,5 +25,19 @@ export default class App extends Component {
         )}
       </div>
     );
+  }
+
+  componentDidMount() {
+    // 네트워크 (비동기) 통신 요청
+    // 마운트 이후 시점에 호출
+    queryNpmRegistry({ query: 'react', size: 2 })
+      .then((response) => response.json())
+      .then(({ objects }) => {
+        // 컴포넌트의 상태 업데이트
+        this.setState({
+          packageInfo: objects,
+        });
+      })
+      .catch(({ message }) => console.error(message));
   }
 }
