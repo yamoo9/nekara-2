@@ -13,6 +13,7 @@ export class AppHeader extends Component {
   };
 
   getDescription() {
+    // React children []
     return [
       'Edit',
       ' ',
@@ -20,6 +21,12 @@ export class AppHeader extends Component {
       ' ',
       'and save to reload.',
     ];
+  }
+
+  renderDescriptionHTML() {
+    return {
+      __html: 'Edit <code>src/App.js</code> and save to reload.',
+    };
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -41,7 +48,8 @@ export class AppHeader extends Component {
     return (
       <header className="App-header">
         <ReactLogo title={label} className={className} />
-        <p>{this.getDescription()}</p>
+        {/* <p>{this.getDescription()}</p> */}
+        <p dangerouslySetInnerHTML={this.renderDescriptionHTML()} />
         <p>브랜드 레이블: {label}</p>
         <a
           className={learnLink.className}
