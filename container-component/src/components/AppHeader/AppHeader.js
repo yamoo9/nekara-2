@@ -65,12 +65,13 @@ export class AppHeader extends Component {
       });
     }, 3000);
 
-    $('.App-header svg').animate(
-      {
-        opacity: 0.1,
-      },
-      10000
-    );
+    this.props.active &&
+      $('.App-header svg').animate(
+        {
+          opacity: 0.1,
+        },
+        10000
+      );
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
