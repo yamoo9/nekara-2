@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import './TiltCard.css';
-import React from 'react';
+import React, { createRef } from 'react';
 // import VanillaTilt from 'vanilla-tilt'
 
 /* -------------------------------------------------------------------------- */
@@ -28,6 +28,9 @@ export class TiltCard extends React.Component {
 
   // DOM 요소 참조를 목적으로 Ref를 생성합니다.
   // → 코드 작성
+  // 클래스 필드
+  // 속성 정의 (인스턴스 멤버)
+  tiltCardRef = createRef(null); // { current: null }
 
   // 최초 마운트 시점 이후 처리할 로직을 작성합니다.
   // → 코드 작성
@@ -40,7 +43,16 @@ export class TiltCard extends React.Component {
 
     return (
       // 생성된 Ref를 참조하도록 설정합니다.
-      <div className="tiltCard">{children}</div>
+      <div ref={this.tiltCardRef} className="tiltCard">
+        {children}
+      </div>
     );
+  }
+
+  componentDidMount() {
+    // console.log(this.props.index);
+    // console.log(document.querySelectorAll('.tiltCard')[this.props.index]);
+    // console.log(document.querySelector('.tiltCard'));
+    console.log(this.tiltCardRef); // { current: div.tiltCard }
   }
 }

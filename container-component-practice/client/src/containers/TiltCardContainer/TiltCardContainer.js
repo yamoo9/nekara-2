@@ -1,16 +1,13 @@
 import './TiltCardContainer.css';
 import { Component } from 'react';
 import { TiltCard } from 'components';
+import { getTiltCard } from 'api';
 
 /* -------------------------------------------------------------------------- */
 
 export class TiltCardContainer extends Component {
   state = {
-    cards: [
-      { id: 'card-vanilla', text: 'Vanilla Tilt Card' },
-      { id: 'card-jquery', text: 'jQuery Tilt Card' },
-      { id: 'card-react', text: 'React Tilt Card' },
-    ],
+    cards: [],
   };
 
   handleRemoveCard = (id) => {
@@ -51,5 +48,14 @@ export class TiltCardContainer extends Component {
         </ul>
       </div>
     );
+  }
+
+  async componentDidMount() {
+    try {
+      const { cards } = await getTiltCard();
+      this.setState({ cards });
+    } catch ({ message }) {
+      console.error(message);
+    }
   }
 }
