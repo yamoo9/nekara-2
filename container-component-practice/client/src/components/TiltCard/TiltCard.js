@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import './TiltCard.css';
-import React, { createRef } from 'react';
+import React, { Component, createRef, forwardRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 
 /* -------------------------------------------------------------------------- */
@@ -12,52 +12,63 @@ import VanillaTilt from 'vanilla-tilt';
 /* -------------------------------------------------------------------------- */
 
 // Vanilla Tilt 옵션
-const tiltOptions = {
-  'max': 8,
-  'speed': 10,
-  'perspective': 400,
-  'scale': 1.01,
-  'glare': true,
-  'max-glare': 0.25,
-};
+// const tiltOptions = {
+//   'max': 8,
+//   'speed': 10,
+//   'perspective': 400,
+//   'scale': 1.01,
+//   'glare': true,
+//   'max-glare': 0.25,
+// };
 
-export class TiltCard extends React.Component {
-  static defaultProps = {
-    options: tiltOptions,
+export default class TiltCard extends Component {
+  static defaultOptions = {
+    'max': 8,
+    'speed': 10,
+    'perspective': 1000,
+    'scale': 1.01,
+    'glare': true,
+    'max-glare': 0.25,
   };
 
-  // DOM 요소 참조를 목적으로 Ref를 생성합니다.
-  // → 코드 작성
-  // 클래스 필드
-  // 속성 정의 (인스턴스 멤버)
-  tiltCardRef = createRef(null); // { current: null }
+  tiltCardRef = createRef(null);
 
-  // this.tiltCardNode
-  // tiltCardNode = null;
+  // TiltCard 사용 시, 사용자 정의 옵션 설정
+  options = {
+    ...TiltCard.defaultOptions,
+    ...this.props.options,
+  };
+
+  handleTiltChange = ({ detail }) => {
+    // console.log(detail);
+  };
 
   // 최초 마운트 시점 이후 처리할 로직을 작성합니다.
-  // → 코드 작성
+  componentDidMount() {
+    const { current: tiltCardNode } = this.tiltCardRef;
+    VanillaTilt.init(tiltCardNode, this.options);
+    // TiltCard 플러그인이 연결된 DOM 노드에 설정된 커스텀 이벤트 감지
+    tiltCardNode.addEventListener('tiltChange', this.handleTiltChange);
+  }
 
   // 마운트 해제 직전에 처리할 로직을 작성합니다.
-  // → 코드 작성
+  componentWillUnmount() {
+    const { current: tiltCardNode } = this.tiltCardRef;
+
+    // 플러그인 인스턴스 파괴
+    tiltCardNode.vanillaTilt.destroy();
+
+    // 연결된 이벤트 해제(제거)
+    tiltCardNode.removeEventListener('tiltChange', this.handleTiltChange);
+  }
 
   render() {
     const { children } = this.props;
 
     return (
-      // 생성된 Ref를 참조하도록 설정합니다.
-      <div
-        // ref={(domNode) => (this.tiltCardNode = domNode)}
-        ref={this.tiltCardRef}
-        className="tiltCard"
-      >
+      <div ref={this.tiltCardRef} className="tiltCard">
         {children}
       </div>
     );
-  }
-
-  componentDidMount() {
-    const { current: tiltCardNode } = this.tiltCardRef;
-    VanillaTilt.init(tiltCardNode, TiltCard.defaultProps.options);
   }
 }
