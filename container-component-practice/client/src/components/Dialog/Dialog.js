@@ -85,6 +85,7 @@ export class Dialog extends React.Component {
 
     document.addEventListener('keyup', handleKeyUp);
 
+    // 클린업 함수 (클로저 활용, React Hooks)
     return () => {
       console.log('cleanup');
       /* cleanup closure function */

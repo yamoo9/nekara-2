@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog } from 'components';
+import { Dialog, SkHeading } from 'components';
 
 // React.forwardRef = HOC 컴포넌트
 const Box = React.forwardRef(function Box({ isVisible, onClose }, ref) {
@@ -59,6 +59,9 @@ class App extends React.Component {
           margin: 50,
         }}
       >
+        <SkHeading>gateway</SkHeading>
+        <SkHeading as="h3">highlight</SkHeading>
+
         <button
           type="button"
           className="openDialogButton"
