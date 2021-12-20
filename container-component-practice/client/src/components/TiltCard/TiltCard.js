@@ -41,7 +41,7 @@ export default class TiltCard extends Component {
     // console.log(detail);
   };
 
-  // 최초 마운트 시점 이후 처리할 로직을 작성합니다.
+  // [구독] 최초 마운트 시점 이후 처리할 로직을 작성합니다.
   componentDidMount() {
     const { current: tiltCardNode } = this.tiltCardRef;
     VanillaTilt.init(tiltCardNode, this.options);
@@ -49,7 +49,7 @@ export default class TiltCard extends Component {
     tiltCardNode.addEventListener('tiltChange', this.handleTiltChange);
   }
 
-  // 마운트 해제 직전에 처리할 로직을 작성합니다.
+  // [취소] 마운트 해제 직전에 처리할 로직을 작성합니다.
   componentWillUnmount() {
     const { current: tiltCardNode } = this.tiltCardRef;
 

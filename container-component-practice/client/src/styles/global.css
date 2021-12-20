@@ -29,3 +29,29 @@ caption.a11yHidden {
   margin: initial;
   white-space: initial;
 }
+
+.box {
+  position: absolute;
+  width: 600px;
+  height: 240px;
+  overflow: hidden;
+  border: 8px solid currentColor;
+  padding: 30px;
+}
+
+.openDialogButton {
+  cursor: pointer;
+  border: 0;
+  padding: 10px;
+  background: #131313;
+  color: #fff;
+}
+
+.openDialogButton svg {
+  fill: currentColor;
+}
+
+.openDialogButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 5px #009cc1;
+}
