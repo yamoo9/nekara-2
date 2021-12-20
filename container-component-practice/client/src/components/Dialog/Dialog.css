@@ -11,6 +11,10 @@
   transform: translate(-50%, -50%);
 }
 
+.modalDialog .content:focus {
+  outline: 3px solid rgba(249, 0, 0, 0.6);
+}
+
 .modalDialog .content * {
   margin: 0;
 }
