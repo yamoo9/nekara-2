@@ -6,7 +6,9 @@ const Box = React.forwardRef(function Box({ isVisible, onClose }, ref) {
   // Box 컴포넌트는 함수 컴포넌트이므로 createRef를 사용할 수 없다.
   return (
     <div className="box" style={{ marginTop: 30, paddingBottom: 60 }}>
-      <Dialog forwardRef={ref} isVisible={isVisible} onClose={onClose} />
+      {isVisible && (
+        <Dialog forwardRef={ref} isVisible={isVisible} onClose={onClose} />
+      )}
       <p>
         야무의, <a href="#">한글 로렘입숨</a>. 나무다리 흐렸다., 등불 섬들은
         몸을 구름처럼 어두워지는 조차 통하는 K는 큰 보이지 떠올랐는지 섬마다
@@ -90,7 +92,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('update', this.dialogRef.current); // div.content
+    // console.log('update', this.dialogRef.current); // div.content
     if (this.dialogRef.current) {
       this.dialogRef.current.focus();
     }
