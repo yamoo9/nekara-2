@@ -35,7 +35,7 @@ export class TiltCardContainer extends Component {
           ))}
         </div>
         <ul className="tiltCardContainer__list">
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <li key={card.id}>
               <TiltCard
                 card={card}
