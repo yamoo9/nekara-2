@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import './TiltCard.css';
 import React, { Component, createRef, forwardRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
@@ -67,6 +65,15 @@ export default class TiltCard extends Component {
 
     return (
       <div ref={this.tiltCardRef} className="tiltCard">
+        <div className="formControl">
+          <label htmlFor="email">레이블</label>
+          <input
+            ref={this.props.forwardRef}
+            id="email"
+            type="email"
+            placeholder="yamoo9@euid.dev"
+          />
+        </div>
         {children}
       </div>
     );
