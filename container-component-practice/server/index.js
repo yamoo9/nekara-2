@@ -59,16 +59,18 @@ apiDirFiles.forEach((file) => {
 
 const { MONGODB_ID, MONGODB_PASS } = process.env;
 
-mongoose
-  .connect(
-    `mongodb+srv://${MONGODB_ID}:${MONGODB_PASS}@cluster0.u7ktp.mongodb.net/sk?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => console.log('데이터베이스에 연결되었습니다.'))
-  .catch((error) => console.error(error.message));
+if (MONGODB_ID && MONGODB_PASS) {
+  mongoose
+    .connect(
+      `mongodb+srv://${MONGODB_ID}:${MONGODB_PASS}@cluster0.u7ktp.mongodb.net/sk?retryWrites=true&w=majority`,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
+    .then(() => console.log('데이터베이스에 연결되었습니다.'))
+    .catch((error) => console.error(error.message));
+}
 
 /* -------------------------------------------------------------------------- */
 
