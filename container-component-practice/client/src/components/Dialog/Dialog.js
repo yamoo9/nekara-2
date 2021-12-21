@@ -10,7 +10,7 @@ export class Dialog extends React.Component {
   dialogRef = React.createRef(null);
 
   render() {
-    const { isVisible, onClose, forwardRef } = this.props;
+    const { isVisible, onClose } = this.props;
 
     return createPortal(
       <div
@@ -21,7 +21,7 @@ export class Dialog extends React.Component {
         aria-hidden={!isVisible}
         aria-label="React Portal﹕모달 다이얼로그"
       >
-        <div ref={forwardRef} className="content" tabIndex={-1}>
+        <div className="content">
           <h2>포털</h2>
           <p>
             여기가 <a href="#here">React 앱 밖의 세상</a>인가요?!
@@ -69,16 +69,29 @@ export class Dialog extends React.Component {
     const lastFocusableElement =
       focusableElements[focusableElements.length - 1];
 
-    console.log({ firstFocusableElement, lastFocusableElement });
+    firstFocusableElement.focus();
 
-    const handleKeyUp = (e) => {
-      if (e.key === 'Escape') {
+    let eventType = 'keydown';
+
+    const handleEvent = (e) => {
+      const { key, shiftKey, target } = e;
+
+      if (
+        Object.is(target, lastFocusableElement) &&
+        !shiftKey &&
+        key === 'Tab'
+      ) {
+        e.preventDefault();
+        firstFocusableElement.focus();
+      }
+
+      if (key === 'Escape') {
         this.props.onClose();
       }
     };
 
-    document.addEventListener('keyup', handleKeyUp);
-    return () => document.removeEventListener('keyup', handleKeyUp);
+    document.addEventListener(eventType, handleEvent);
+    return () => document.removeEventListener(eventType, handleEvent);
   }
 
   componentDidMount() {

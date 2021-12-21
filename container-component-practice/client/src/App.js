@@ -1,25 +1,21 @@
 import React from 'react';
 import { Dialog, SkHeading } from 'components';
 
-// React.forwardRef = HOC 컴포넌트
-const Box = React.forwardRef(function Box({ isVisible, onClose }, ref) {
-  // Box 컴포넌트는 함수 컴포넌트이므로 createRef를 사용할 수 없다.
+const Box = function Box({ isVisible, onClose }) {
   return (
     <div className="box" style={{ marginTop: 30, paddingBottom: 60 }}>
-      {isVisible && (
-        <Dialog forwardRef={ref} isVisible={isVisible} onClose={onClose} />
-      )}
+      {isVisible && <Dialog isVisible={isVisible} onClose={onClose} />}
       <p>
-        야무의, <a href="#">한글 로렘입숨</a>. 나무다리 흐렸다., 등불 섬들은
-        몸을 구름처럼 어두워지는 조차 통하는 K는 큰 보이지 떠올랐는지 섬마다
-        부풀어 도착했다. 풀고 바다에 눈에 듯싶었다. 마을은. 풀고 눈에, 허공을
-        성이 K는 피었다. 따라서.
+        야무의, <a href="#temp1">한글 로렘입숨</a>. 나무다리 흐렸다., 등불
+        섬들은 몸을 구름처럼 어두워지는 조차 통하는 K는 큰 보이지 떠올랐는지
+        섬마다 부풀어 도착했다. 풀고 바다에 눈에 듯싶었다. 마을은. 풀고 눈에,
+        허공을 성이 K는 피었다. 따라서.
       </p>
       <p>
         마을은 하늘에 도착했다. 그뭄달이 서서, 따라서, 저녁 결박된 피었다.
         비치어, 어두워지는 길에서 꽃피는 성이 버려진 파묻혀. 보이지, 안개와
-        수평선 구름처럼, 띄지 성이, <a href="#">등불</a> 떠올랐는지 어두워지는
-        조차 바다에 풀고 않을뿐더러! 조차.
+        수평선 구름처럼, 띄지 성이, <a href="#temp2">등불</a> 떠올랐는지
+        어두워지는 조차 바다에 풀고 않을뿐더러! 조차.
       </p>
       <p>
         결박된 깊이 희멀건 언제 파묻혀. 마을은 수평선 따라서 흘러가는 하늘에
@@ -28,18 +24,14 @@ const Box = React.forwardRef(function Box({ isVisible, onClose }, ref) {
       </p>
     </div>
   );
-});
+};
 
 class App extends React.Component {
   state = {
     isVisibleDialog: false,
   };
 
-  dialogRef = React.createRef(null);
-
-  // 상태 업데이트 메서드(클래스의 인스턴스가 소유한 함수)
   handleShowDialog() {
-    console.log('show dialog');
     this.setState({
       isVisibleDialog: true,
     });
@@ -81,23 +73,11 @@ class App extends React.Component {
         </button>
 
         <Box
-          ref={this.dialogRef}
           isVisible={this.state.isVisibleDialog}
           onClose={this.handleHideDialog.bind(this)}
         />
       </div>
     );
-  }
-
-  componentDidMount() {
-    // console.log('mount', this.dialogRef.current); // null
-  }
-
-  componentDidUpdate() {
-    // console.log('update', this.dialogRef.current); // div.content
-    if (this.dialogRef.current) {
-      this.dialogRef.current.focus();
-    }
   }
 }
 
