@@ -5,13 +5,17 @@ import { getFocusableChildren } from 'utils';
 
 /* -------------------------------------------------------------------------- */
 /* Dialog                                                                     */
+/* Dialog.Head                                                                */
+/* Dialog.Main                                                                */
+/* Dialog.Foot                                                                */
+/* Dialog.Dim                                                                 */
 /* -------------------------------------------------------------------------- */
 export class Dialog extends React.Component {
   dialogRef = React.createRef(null);
   opennerButton = null;
 
   render() {
-    const { isVisible, onClose } = this.props;
+    const { isVisible, children } = this.props;
 
     return createPortal(
       <div
@@ -22,25 +26,7 @@ export class Dialog extends React.Component {
         aria-hidden={!isVisible}
         aria-label="React Portal﹕모달 다이얼로그"
       >
-        <div className="content">
-          <h2>포털</h2>
-          <p>
-            여기가 <a href="#here">React 앱 밖의 세상</a>인가요?!
-          </p>
-          <p>
-            <a
-              href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              접근 가능한 다이얼로그 컴포넌트
-            </a>
-            를 만들어야 합니다.
-          </p>
-          <button type="button" disabled>
-            close dialog
-          </button>
-        </div>
+        <div className="content">{children}</div>
         <button
           type="button"
           className="closeDialogButton"

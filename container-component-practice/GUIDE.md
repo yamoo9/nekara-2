@@ -43,7 +43,7 @@ React 컴포넌트가 가지는 속성
 
 - 키보드 트랩(trap)
 - 오프너(openner) 버튼 초점 이동
-- 컴파운드(compound) 컴포넌트
+- 컴파운드(compound) 컴포넌트 ( = 이름이 있는 콘텐츠 슬롯 (named slot))
 - 콘텐츠 슬롯(slot)
 
 <br />

@@ -4,7 +4,6 @@ import { Dialog, SkHeading } from 'components';
 const Box = function Box({ isVisible, onClose }) {
   return (
     <div className="box" style={{ marginTop: 30, paddingBottom: 60 }}>
-      {isVisible && <Dialog isVisible={isVisible} onClose={onClose} />}
       <p>
         야무의, <a href="#temp1">한글 로렘입숨</a>. 나무다리 흐렸다., 등불
         섬들은 몸을 구름처럼 어두워지는 조차 통하는 K는 큰 보이지 떠올랐는지
@@ -37,13 +36,15 @@ class App extends React.Component {
     });
   }
 
-  handleHideDialog() {
+  handleHideDialog = () => {
     this.setState({
       isVisibleDialog: false,
     });
-  }
+  };
 
   render() {
+    const { isVisibleDialog: isVisible } = this.state;
+
     return (
       <div
         className="container"
@@ -76,6 +77,34 @@ class App extends React.Component {
           isVisible={this.state.isVisibleDialog}
           onClose={this.handleHideDialog.bind(this)}
         />
+
+        {isVisible && (
+          <Dialog isVisible={isVisible} onClose={this.handleHideDialog}>
+            {/* <Dialog.Head>
+              <h2>포털</h2>
+            </Dialog.Head>
+            <Dialog.Main>
+              <p>
+                여기가 <a href="#here">React 앱 밖의 세상</a>인가요?!
+              </p>
+              <p>
+                <a
+                  href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  접근 가능한 다이얼로그 컴포넌트
+                </a>
+                를 만들어야 합니다.
+              </p>
+            </Dialog.Main>
+            <Dialog.Foot>
+              <button type="button" disabled>
+                close dialog
+              </button>
+            </Dialog.Foot> */}
+          </Dialog>
+        )}
       </div>
     );
   }
