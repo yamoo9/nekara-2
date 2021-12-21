@@ -33,7 +33,7 @@ Discord 음성 채널을 활용해 수업 내용에 대해 대화하며 수강 (
 
 React 컴포넌트가 가지는 속성
 
-- `displayName`
+- `displayName` (설정이 없을 경우, 함수의 `name` 속성이 사용 됨)
 - `defaultProps`
 - `propTypes`
 
@@ -41,10 +41,11 @@ React 컴포넌트가 가지는 속성
 
 ## Dialog 컴포넌트
 
-- 키보드 트랩(trap)
+- 키보드 트랩(trap) ← 유틸리티 활용
 - 오프너(openner) 버튼 초점 이동
 - 컴파운드(compound) 컴포넌트 ( = 이름이 있는 콘텐츠 슬롯 (named slot))
 - 콘텐츠 슬롯(slot)
+- CSS 모듈
 
 <br />
 

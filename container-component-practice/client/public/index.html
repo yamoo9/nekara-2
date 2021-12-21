@@ -43,12 +43,14 @@
     <!-- Render React app -->
     <div id="root"></div>
 
-    <!-- Render Modal Dialog Component (need container) -->
-    <!-- <div id="modal-dialog-zone"> -->
-      <!-- portal rendering -->
-    <!-- </div> -->
-
     <!-- 로딩 스피너 접근성을 위한 DOM 요소를 추가하세요. -->
+    <!-- AT: Screen Reader -->
+    <div id="loading-start" aria-live="assertive" role="alert">
+      <span class="a11yHidden">서버로부터 데이터를 로딩 중입니다.</span>
+    </div>
+    <div id="loading-end" aria-live="assertive">
+      
+    </div>
 
   </body>
 
