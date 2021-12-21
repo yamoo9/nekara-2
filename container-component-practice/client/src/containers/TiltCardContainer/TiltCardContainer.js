@@ -3,39 +3,42 @@ import { useState, useEffect } from 'react';
 import { TiltCard, A11yHidden } from 'components';
 import { getTiltCard } from 'api';
 
-/* -------------------------------------------------------------------------- */
-// React Hooks + Functioncal Component
-// 상태 state, 사이드 이펙트 effects
-// 네트워크 통신
-// DOM 요소 접근/조작 (외부 라이브러리 통합)
-// 이벤트 구독/취소
-
 export function TiltCardContainer(props) {
-  // 함수 컴포넌트의 상태???
-  // React Hooks - state hook
+  // const [cards, setCards] = useState([]);
+  // useEffect(() => getTiltCard().then(({ cards }) => setCards(cards)));
 
-  // 관심사의 분리
-  // 어떤 상태를 관리할 것인가?
-  const [cards, setCards] = useState([]);
+  const [times, setTimes] = useState(0);
 
-  // 함수 컴포넌트에서 라이프 사이클 메서드??
-  // 사이드 이펙트 관리
-  // 특정 시점에 호출되는 콜백
+  // componentDidMount (1)
+  // componentDidUpdate (N)
+  // componentWillUnmount (1)
+
   useEffect(
-    /* componentDidMount */ () => {
-      // 이 구간에서 함수 안일지라도 마운트 이후에 콜백되므로
-      // 클래스 컴포넌트의 라이프 사이클 메서드를 대체
-      getTiltCard().then(({ cards }) => setCards(cards));
+    /* after mount & update → callback */
+    () => {
+      // 이벤트 구독
+      console.log('이벤트 구독');
+      // 타임아웃 설정
+      let clearId = setTimeout(() => setTimes(times + 10), 1000);
 
-      // 상태 변경??
-      // 리엑트 Fiber 알고리즘이 React 컴포넌트를 다시 렌더링 시도 → UI 업데이트 렌더링
-    }
+      return () => {
+        // console.log('클린업');
+        console.log('이벤트 구독 취소');
+        // 타임아웃 클리어
+        clearTimeout(clearId);
+      };
+    },
+    /* state dependency array */
+    [times]
   );
 
   return (
     <div className="tiltCardContainer" lang="en" aria-labelledby="tiltcards">
       <A11yHidden id="tiltcards">카드 목록 레이블</A11yHidden>
-      <div className="tiltCardContainer__buttonGroup">
+      <output style={{ display: 'block', margin: 100 }} lang="en">
+        {times} times
+      </output>
+      {/* <div className="tiltCardContainer__buttonGroup">
         {cards.map(({ id, text }) => (
           <button
             key={id}
@@ -46,8 +49,8 @@ export function TiltCardContainer(props) {
             {text} 제거
           </button>
         ))}
-      </div>
-      <ul className="tiltCardContainer__list">
+      </div> */}
+      {/* <ul className="tiltCardContainer__list">
         {cards.map((card, index) => (
           <li key={card.id}>
             <TiltCard
@@ -58,7 +61,7 @@ export function TiltCardContainer(props) {
             </TiltCard>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
