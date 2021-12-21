@@ -60,7 +60,6 @@ class App extends React.Component {
         }}
       >
         <SkHeading as="h2">gateway</SkHeading>
-        <SkHeading as="h3">highlight</SkHeading>
 
         <button
           type="button"
