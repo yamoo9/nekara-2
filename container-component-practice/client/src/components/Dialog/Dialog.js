@@ -8,6 +8,7 @@ import { getFocusableChildren } from 'utils';
 /* -------------------------------------------------------------------------- */
 export class Dialog extends React.Component {
   dialogRef = React.createRef(null);
+  opennerButton = null;
 
   render() {
     const { isVisible, onClose } = this.props;
@@ -104,10 +105,14 @@ export class Dialog extends React.Component {
   }
 
   componentDidMount() {
+    // 모달 다이얼로그가 화면에 표시되는 시점에 라이프 사이클 메서드 실행
+    // 그렇다면? 이 실행 시점에 문서의 현재 활성화 된 요소 노드(document.activeElement)는?
+    this.opennerButton = document.activeElement;
     this.unbindKeyEvent = this.bindKeyEvent();
   }
 
   componentWillUnmount() {
     this.unbindKeyEvent();
+    this.opennerButton.focus();
   }
 }
