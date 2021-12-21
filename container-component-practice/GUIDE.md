@@ -31,6 +31,12 @@ Discord 음성 채널을 활용해 수업 내용에 대해 대화하며 수강 (
 - CSS 모듈
 - propTypes 검사 (매뉴얼)
 
+React 컴포넌트가 가지는 속성
+
+- `displayName`
+- `defaultProps`
+- `propTypes`
+
 <br />
 
 ## Dialog 컴포넌트

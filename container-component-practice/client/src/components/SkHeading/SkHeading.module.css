@@ -1,9 +1,9 @@
 .headline {
-  text-transform: uppercase;
   margin: 40px 0 22px 16px;
+  line-height: 1;
+  text-transform: uppercase;
   font-size: 2.4rem;
   font-weight: 900;
-  line-height: 1;
 }
 
 .SK {
