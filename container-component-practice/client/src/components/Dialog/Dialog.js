@@ -77,6 +77,15 @@ export class Dialog extends React.Component {
       const { key, shiftKey, target } = e;
 
       if (
+        Object.is(target, firstFocusableElement) &&
+        shiftKey &&
+        key === 'Tab'
+      ) {
+        e.preventDefault();
+        lastFocusableElement.focus();
+      }
+
+      if (
         Object.is(target, lastFocusableElement) &&
         !shiftKey &&
         key === 'Tab'
