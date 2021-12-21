@@ -46,7 +46,7 @@ export class Dialog extends React.Component {
           className="closeDialogButton"
           aria-label="모달 다이얼로그 닫기"
           title="모달 다이얼로그 닫기"
-          onClick={onClose}
+          onClick={this.close}
         >
           <svg
             width="24"
@@ -58,11 +58,16 @@ export class Dialog extends React.Component {
             <path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z" />
           </svg>
         </button>
-        <div role="presentation" className="dim" onClick={onClose} />
+        <div role="presentation" className="dim" onClick={this.close} />
       </div>,
       document.body
     );
   }
+
+  close = () => {
+    this.props.onClose();
+    this.opennerButton.focus();
+  };
 
   bindKeyEvent() {
     const focusableElements = getFocusableChildren(this.dialogRef.current);
@@ -96,7 +101,7 @@ export class Dialog extends React.Component {
       }
 
       if (key === 'Escape') {
-        this.props.onClose();
+        this.close();
       }
     };
 
@@ -113,6 +118,6 @@ export class Dialog extends React.Component {
 
   componentWillUnmount() {
     this.unbindKeyEvent();
-    this.opennerButton.focus();
+    // this.opennerButton.focus();
   }
 }
