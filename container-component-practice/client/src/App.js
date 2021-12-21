@@ -59,7 +59,7 @@ class App extends React.Component {
           margin: 50,
         }}
       >
-        <SkHeading>gateway</SkHeading>
+        <SkHeading as="h2">gateway</SkHeading>
         <SkHeading as="h3">highlight</SkHeading>
 
         <button

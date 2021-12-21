@@ -1,22 +1,12 @@
-// global css
-// import './SkHeading.css';
-
 // module css
-// import styles from './SkHeading.module.css';
 import styles from './SkHeading.module.css';
 
 import React from 'react';
-import { classNames } from 'utils';
+import { classNames, PropTypes } from 'utils';
 
 /* -------------------------------------------------------------------------- */
 
 const SkHeading = ({ as: Comp, className, children, ...restProps }) => {
-  if (!children || typeof children !== 'string') {
-    throw new Error(
-      'SkHeading 컴포넌트의 `children` prop은 필수이며 문자 타입만 허용합니다.'
-    );
-  }
-
   return (
     <Comp className={classNames(styles.headline, className)} {...restProps}>
       <span className={styles.SK}>SK</span>
@@ -25,9 +15,24 @@ const SkHeading = ({ as: Comp, className, children, ...restProps }) => {
   );
 };
 
+// React 컴포넌트 필히 가지는 속성
+// displayName
+// defaultProps
+// propTypes
+
 SkHeading.defaultProps = {
-  as: 'h2',
   className: '',
 };
+
+SkHeading.propTypes = {
+  as: PropTypes.string,
+  className: PropTypes.string,
+};
+
+// if (!children || typeof children !== 'string') {
+//   throw new Error(
+//     'SkHeading 컴포넌트의 `children` prop은 필수이며 문자 타입만 허용합니다.'
+//   );
+// }
 
 export default SkHeading;
