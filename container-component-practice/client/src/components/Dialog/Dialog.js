@@ -1,7 +1,7 @@
-import './Dialog.css';
+import styles from './Dialog.module.css';
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { getFocusableChildren } from 'utils';
+import { getFocusableChildren, classNames } from 'utils';
 
 /* -------------------------------------------------------------------------- */
 /* Dialog                                                                     */
@@ -11,6 +11,66 @@ import { getFocusableChildren } from 'utils';
 /* Dialog.Dim                                                                 */
 /* -------------------------------------------------------------------------- */
 export class Dialog extends React.Component {
+  // 컴파운드 컴포넌트 (클래스 멤버)
+  static Dim = function DialogDim({ onClose }) {
+    return <div role="presentation" className={styles.dim} onClick={onClose} />;
+  };
+
+  static Head = function DialogHead({
+    as: Comp = 'header',
+    className = '',
+    ...restProps
+  }) {
+    return (
+      <Comp className={classNames(styles.head, className)} {...restProps} />
+    );
+  };
+
+  static Foot = function DialogFoot({
+    as: Comp = 'footer',
+    className = '',
+    ...restProps
+  }) {
+    return (
+      <Comp className={classNames(styles.foot, className)} {...restProps} />
+    );
+  };
+
+  static Main = function DialogMain({
+    as: Comp = 'article',
+    className = '',
+    ...restProps
+  }) {
+    return (
+      <Comp className={classNames(styles.main, className)} {...restProps} />
+    );
+  };
+
+  static CloseButton = function DialogCloseButton({
+    onClose = null,
+    ...restProps
+  }) {
+    return (
+      <button
+        type="button"
+        className={styles.closeButton}
+        aria-label="모달 다이얼로그 닫기"
+        title="모달 다이얼로그 닫기"
+        onClick={onClose}
+      >
+        <svg
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          fillRule="evenodd"
+          clipRule="evenodd"
+        >
+          <path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z" />
+        </svg>
+      </button>
+    );
+  };
+
   dialogRef = React.createRef(null);
   opennerButton = null;
 
@@ -18,34 +78,18 @@ export class Dialog extends React.Component {
     const { isVisible, children } = this.props;
 
     return createPortal(
-      <div
+      <section
         ref={this.dialogRef}
         role="dialog"
         aria-modal="true"
-        className="modalDialog"
+        className={styles.container}
         aria-hidden={!isVisible}
         aria-label="React Portal﹕모달 다이얼로그"
       >
-        <div className="content">{children}</div>
-        <button
-          type="button"
-          className="closeDialogButton"
-          aria-label="모달 다이얼로그 닫기"
-          title="모달 다이얼로그 닫기"
-          onClick={this.close}
-        >
-          <svg
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          >
-            <path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z" />
-          </svg>
-        </button>
-        <div role="presentation" className="dim" onClick={this.close} />
-      </div>,
+        {children}
+        <Dialog.CloseButton onClose={this.close} />
+        <Dialog.Dim onClose={this.close} />
+      </section>,
       document.body
     );
   }

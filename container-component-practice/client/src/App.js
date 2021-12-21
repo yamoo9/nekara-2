@@ -80,10 +80,10 @@ class App extends React.Component {
 
         {isVisible && (
           <Dialog isVisible={isVisible} onClose={this.handleHideDialog}>
-            {/* <Dialog.Head>
-              <h2>포털</h2>
-            </Dialog.Head>
             <Dialog.Main>
+              <Dialog.Head>
+                <h2>포털</h2>
+              </Dialog.Head>
               <p>
                 여기가 <a href="#here">React 앱 밖의 세상</a>인가요?!
               </p>
@@ -98,11 +98,6 @@ class App extends React.Component {
                 를 만들어야 합니다.
               </p>
             </Dialog.Main>
-            <Dialog.Foot>
-              <button type="button" disabled>
-                close dialog
-              </button>
-            </Dialog.Foot> */}
           </Dialog>
         )}
       </div>
