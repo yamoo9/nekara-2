@@ -28,8 +28,8 @@ Discord 음성 채널을 활용해 수업 내용에 대해 대화하며 수강 (
 ## SkHeading 컴포넌트
 
 - 헤딩 레벨 접근성 (영상 시청 여부 확인)
-- CSS 모듈
 - propTypes 검사 (매뉴얼)
+- CSS 모듈
 
 React 컴포넌트가 가지는 속성
 
@@ -53,20 +53,26 @@ React 컴포넌트가 가지는 속성
 
 - 로딩 접근성 (영상 시청)
 - Portal의 필요성 재고
+- React Hooks 활용
+- PropTypes 활용
 - CSS 모듈
 
 <br />
 
 ## SkSection 컴포넌트
 
-- CSS 모듈
 - 상태 관리
 - 네트워크 통신 (비동기 요청)
+- React Hooks 활용
+- PropTypes 활용
+- CSS 모듈
 
 <br />
 
 ## SkCard 컴포넌트
 
-- CSS 모듈
 - 데이터 바인딩
+- React Hooks 활용
+- PropTypes 활용
+- CSS 모듈
 

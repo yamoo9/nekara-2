@@ -1,15 +1,8 @@
 import styles from './Dialog.module.css';
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { getFocusableChildren, classNames } from 'utils';
+import { getTabbableElements, classNames } from 'utils';
 
-/* -------------------------------------------------------------------------- */
-/* Dialog                                                                     */
-/* Dialog.Head                                                                */
-/* Dialog.Main                                                                */
-/* Dialog.Foot                                                                */
-/* Dialog.Dim                                                                 */
-/* -------------------------------------------------------------------------- */
 export class Dialog extends React.Component {
   // 컴파운드 컴포넌트 (클래스 멤버)
   static Dim = function DialogDim({ onClose }) {
@@ -100,12 +93,11 @@ export class Dialog extends React.Component {
   };
 
   bindKeyEvent() {
-    const focusableElements = getFocusableChildren(this.dialogRef.current);
-    const firstFocusableElement = focusableElements[0];
-    const lastFocusableElement =
-      focusableElements[focusableElements.length - 1];
+    const tabbableElements = getTabbableElements(this.dialogRef.current);
+    const firstTabbableElement = tabbableElements[0];
+    const lastTabbableElement = tabbableElements[tabbableElements.length - 1];
 
-    firstFocusableElement.focus();
+    firstTabbableElement.focus();
 
     let eventType = 'keydown';
 
@@ -113,21 +105,21 @@ export class Dialog extends React.Component {
       const { key, shiftKey, target } = e;
 
       if (
-        Object.is(target, firstFocusableElement) &&
+        Object.is(target, firstTabbableElement) &&
         shiftKey &&
         key === 'Tab'
       ) {
         e.preventDefault();
-        lastFocusableElement.focus();
+        lastTabbableElement.focus();
       }
 
       if (
-        Object.is(target, lastFocusableElement) &&
+        Object.is(target, lastTabbableElement) &&
         !shiftKey &&
         key === 'Tab'
       ) {
         e.preventDefault();
-        firstFocusableElement.focus();
+        firstTabbableElement.focus();
       }
 
       if (key === 'Escape') {
@@ -140,8 +132,6 @@ export class Dialog extends React.Component {
   }
 
   componentDidMount() {
-    // 모달 다이얼로그가 화면에 표시되는 시점에 라이프 사이클 메서드 실행
-    // 그렇다면? 이 실행 시점에 문서의 현재 활성화 된 요소 노드(document.activeElement)는?
     this.opennerButton = document.activeElement;
     this.unbindKeyEvent = this.bindKeyEvent();
   }
