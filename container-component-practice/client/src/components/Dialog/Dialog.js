@@ -1,11 +1,24 @@
 import styles from './Dialog.module.css';
 import { useRef, useEffect, useCallback } from 'react';
-import { string, elementType, any, func, oneOfType } from 'prop-types';
+import {
+  string,
+  node,
+  elementType,
+  bool,
+  any,
+  func,
+  oneOf,
+  oneOfType,
+} from 'prop-types';
 import { createPortal } from 'react-dom';
 import { getTabbableElements, classNames } from 'utils';
 
-// React 컴포넌트 - elementType (e.g: Button)
-// React 요소 - element (e.g: <Button/>, React.createElement(Button))
+// [비교]
+// PropTypes.elementType  VS.  PropTypes.element  VS.  PropTypes.node
+//
+// PropTypes.elementType = React 컴포넌트(함수 또는 클래스)
+// PropTypes.element     = React 요소(JSX, React.createElement())
+// PropTypes.node        = React 요소(JSX) 또는 number 또는 string 또는 array 또는 React.Fragment
 
 // [미션]
 // 클래스 컴포넌트가 아닌, 함수 컴포넌트 + React 훅을 사용해 동일하게 작동되도록 구성
@@ -98,6 +111,12 @@ export function Dialog({ isVisible, onClose, children, ...restProps }) {
     bodyNode
   );
 }
+Dialog.propTypes = {
+  isVisible: bool,
+  onClose: func.isRequired,
+  children: node.isRequired,
+  restProps: any,
+};
 
 /* -------------------------------------------------------------------------- */
 
@@ -105,7 +124,7 @@ Dialog.Dim = function DialogDim({ onClose }) {
   return <div role="presentation" className={styles.dim} onClick={onClose} />;
 };
 Dialog.Dim.propTypes = {
-  onClose: func,
+  onClose: oneOfType([func, oneOf([null, undefined])]),
 };
 
 /* -------------------------------------------------------------------------- */
