@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { TiltCard, A11yHidden } from 'components';
 import { getTiltCard } from 'api';
 
-const initialization = () => {
+const initialization = (initialCount) => {
   let countValueKey = 'euid-count';
   let value = localStorage.getItem(countValueKey);
   if (!value) {
     localStorage.setItem(countValueKey, JSON.stringify({ count: 1000 }));
   }
-  return value ? JSON.parse(value).count : 100;
+  return value ? JSON.parse(value).count : initialCount;
 };
 
 const Output = (props) => {
@@ -34,7 +34,7 @@ export function TiltCardContainer(props) {
   });
 
   // 상태 관리 (지연된 초기화(함수) 활용)
-  // const [count] = useState(initialization);
+  const [count] = useState(initialization.bind(null, 0));
 
   // [사이드 이펙트 관리]
 
