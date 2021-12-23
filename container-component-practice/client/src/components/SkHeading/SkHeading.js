@@ -1,8 +1,8 @@
 // module css
 import styles from './SkHeading.module.css';
-
 import React from 'react';
-import { classNames, PropTypes } from 'utils';
+import { string } from 'prop-types';
+import { classNames } from 'utils';
 
 /* -------------------------------------------------------------------------- */
 
@@ -20,9 +20,9 @@ SkHeading.defaultProps = {
 };
 
 SkHeading.propTypes = {
-  as: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.string,
+  className: string,
+  as: string.isRequired,
+  children: string.isRequired,
 };
 
 export default SkHeading;

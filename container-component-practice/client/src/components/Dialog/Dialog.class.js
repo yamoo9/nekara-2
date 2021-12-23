@@ -3,14 +3,6 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { getTabbableElements, classNames } from 'utils';
 
-// [미션]
-// 클래스 컴포넌트가 아닌, 함수 컴포넌트 + React 훅을 사용해 동일하게 작동되도록 구성
-// 컴파운드 컴포넌트 → 함수_컴포넌트.컴포넌트 작성
-// props 검사 → PropTypes 패키지 활용
-// 상태 관리 → React.useState() 활용
-// 사이드 이펙트 관리 → React.useEffect() 활용
-// 참조 관리 → React.useRef() 활용
-
 export class Dialog extends React.Component {
   // 컴파운드 컴포넌트 (클래스 멤버)
   static Dim = function DialogDim({ onClose }) {

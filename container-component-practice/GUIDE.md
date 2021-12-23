@@ -58,7 +58,7 @@
 
 - [x]  헤딩 레벨 접근성 (영상 시청 여부 확인)
 - [x]  CSS 모듈
-- [ ]  propTypes 검사 (매뉴얼 → PropTypes 패키지 설치/활용)
+- [x]  propTypes 검사 (매뉴얼 → PropTypes 패키지 설치/활용)
 
 <br />
 
@@ -67,10 +67,10 @@
 - [x]  키보드 트랩(trap) ← 유틸리티 활용
 - [x]  오프너(openner) 버튼 초점 이동
 - [x]  컴파운드(compound) 컴포넌트 ( = 이름이 있는 콘텐츠 슬롯 (named slot))
-- [x]  콘텐츠 슬롯(slot)
+- [x]  콘텐츠 슬롯(slot) → props.children 활용
 - [ ]  React Hooks 활용
 - [ ]  PropTypes 활용
-- [ ]  CSS 모듈
+- [x]  CSS 모듈
 
 <br />
 
