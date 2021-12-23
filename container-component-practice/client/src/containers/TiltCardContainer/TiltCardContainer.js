@@ -1,6 +1,6 @@
 /* eslint-disable */
 import './TiltCardContainer.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TiltCard, A11yHidden } from 'components';
 import { getTiltCard } from 'api';
 
@@ -27,18 +27,36 @@ const Output = (props) => {
 
 export function TiltCardContainer(props) {
   // [상태 관리]
-  // const [state, updateState] = useState({
-  //   a: 1,
-  //   b: 2,
-  //   count: 10,
-  //   name: 'euid',
-  // });
-
+  const [state, updateState] = useState({
+    a: 1,
+    b: 2,
+    count: 10,
+    name: 'euid',
+  });
   // 상태 관리 (지연된 초기화(함수) 활용)
-  const [count] = useState(initialization.bind(null, 0));
+  // const [count] = useState(initialization.bind(null, 0));
 
   // [사이드 이펙트 관리]
+  useEffect(() => {
+    console.log('최초 렌더링 후에 1회 실행');
+    // 네트워크 요청 (비동기 통신, 응답)
+  }, []);
 
+  useEffect(() => {
+    console.group('state.name 또는 state.count 가 업데이트 된 경우');
+    console.log('componentDidUpdate');
+    console.log('changed name:', state.name);
+    console.log('changed count:', state.count);
+    console.groupEnd();
+  }, [state.name, state.count]);
+
+  useEffect(() => {
+    console.group('state.a 가 변경된 경우');
+    console.log('changed a:', state.a);
+    console.groupEnd();
+  }, [state.a]);
+
+  // render
   return (
     <>
       <button
@@ -53,11 +71,34 @@ export function TiltCardContainer(props) {
       >
         update name
       </button>
-      <Output>{count}</Output>
-      {/* <Output>{state.a}</Output>
+      <button
+        type="button"
+        style={{ margin: 30, display: 'block' }}
+        onClick={() =>
+          updateState({
+            ...state,
+            a: state.a + 100,
+          })
+        }
+      >
+        update a
+      </button>
+      <button
+        type="button"
+        style={{ margin: 30, display: 'block' }}
+        onClick={() =>
+          updateState({
+            ...state,
+            count: state.count + 10,
+          })
+        }
+      >
+        update count
+      </button>
+      <Output>{state.a}</Output>
       <Output>{state.b}</Output>
       <Output>{state.count}</Output>
-      <Output>{state.name}</Output> */}
+      <Output>{state.name}</Output>
       <div className="tiltCardContainer" lang="en" aria-labelledby="tiltcards">
         <A11yHidden id="tiltcards">카드 목록 레이블</A11yHidden>
         {/* <div className="tiltCardContainer__buttonGroup">
