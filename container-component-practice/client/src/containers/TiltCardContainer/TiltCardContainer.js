@@ -13,6 +13,12 @@ const initialization = () => {
   return value ? JSON.parse(value).count : 100;
 };
 
+const Output = (props) => {
+  return (
+    <output style={{ margin: 30, display: 'block' }}>{props.children}</output>
+  );
+};
+
 export function TiltCardContainer(props) {
   // [상태 관리]
   // 여러 상태를 묶어서 관리하는 방법 추천 X
@@ -39,14 +45,17 @@ export function TiltCardContainer(props) {
         style={{ display: 'block' }}
         onClick={() =>
           updateState({
-            // ...state,
+            ...state,
             name: 'yamoo9',
           })
         }
       >
         update name
       </button>
-      <output>{state.count}</output> <output>{state.name}</output>
+      <Output>{state.a}</Output>
+      <Output>{state.b}</Output>
+      <Output>{state.count}</Output>
+      <Output>{state.name}</Output>
       <div className="tiltCardContainer" lang="en" aria-labelledby="tiltcards">
         <A11yHidden id="tiltcards">카드 목록 레이블</A11yHidden>
         {/* <div className="tiltCardContainer__buttonGroup">
