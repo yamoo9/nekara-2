@@ -6,10 +6,16 @@ import { getTiltCard } from 'api';
 
 const initialization = (initialCount) => {
   let countValueKey = 'euid-count';
+
+  // localStorage.clear();
   let value = localStorage.getItem(countValueKey);
-  if (!value) {
-    localStorage.setItem(countValueKey, JSON.stringify({ count: 1000 }));
-  }
+
+  setTimeout(() => {
+    if (!value) {
+      localStorage.setItem(countValueKey, JSON.stringify({ count: 1000 }));
+    }
+  });
+
   return value ? JSON.parse(value).count : initialCount;
 };
 
@@ -21,17 +27,12 @@ const Output = (props) => {
 
 export function TiltCardContainer(props) {
   // [상태 관리]
-  // 여러 상태를 묶어서 관리하는 방법 추천 X
-  // 관심사의 분리가 되지 않기 때문
-  // 그리고 성능 이슈 문제 유발 (불필요한 리 렌더링 시도)
-  // const [count] = useState(10);
-  // const [name] = useState('euid');
-  const [state, updateState] = useState({
-    a: 1,
-    b: 2,
-    count: 10,
-    name: 'euid',
-  });
+  // const [state, updateState] = useState({
+  //   a: 1,
+  //   b: 2,
+  //   count: 10,
+  //   name: 'euid',
+  // });
 
   // 상태 관리 (지연된 초기화(함수) 활용)
   const [count] = useState(initialization.bind(null, 0));
@@ -42,7 +43,7 @@ export function TiltCardContainer(props) {
     <>
       <button
         type="button"
-        style={{ display: 'block' }}
+        style={{ margin: 30, display: 'block' }}
         onClick={() =>
           updateState({
             ...state,
@@ -52,10 +53,11 @@ export function TiltCardContainer(props) {
       >
         update name
       </button>
-      <Output>{state.a}</Output>
+      <Output>{count}</Output>
+      {/* <Output>{state.a}</Output>
       <Output>{state.b}</Output>
       <Output>{state.count}</Output>
-      <Output>{state.name}</Output>
+      <Output>{state.name}</Output> */}
       <div className="tiltCardContainer" lang="en" aria-labelledby="tiltcards">
         <A11yHidden id="tiltcards">카드 목록 레이블</A11yHidden>
         {/* <div className="tiltCardContainer__buttonGroup">
