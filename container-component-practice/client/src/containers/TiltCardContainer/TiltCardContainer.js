@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
+
 import './TiltCardContainer.css';
 import { useState, useEffect } from 'react';
 import { TiltCard, A11yHidden } from 'components';
 import { getTiltCard } from 'api';
-import { useCount, useName } from 'hooks';
+import { useA, useCount, useName } from 'hooks';
 
+// 지연된 초기화 함수
 const initialization = (initialCount) => {
   let countValueKey = 'euid-count';
 
@@ -29,12 +32,7 @@ export function TiltCardContainer(props) {
   // [상태 관리] : 개별 상태 관리 권장
 
   // 관심사 A ----------------------------------
-  const [a, setA] = useState(1);
-  useEffect(() => {
-    console.group('a 변경된 경우');
-    console.log('changed a:', a);
-    console.groupEnd();
-  }, [a]);
+  const [a, setA] = useA(0);
 
   // 관심사 Count ------------------------------
   const [count, setCount] = useCount(10);
