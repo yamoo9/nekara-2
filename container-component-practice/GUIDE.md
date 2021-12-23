@@ -68,8 +68,8 @@
 - [x]  오프너(openner) 버튼 초점 이동
 - [x]  컴파운드(compound) 컴포넌트 ( = 이름이 있는 콘텐츠 슬롯 (named slot))
 - [x]  콘텐츠 슬롯(slot) → props.children 활용
-- [ ]  React Hooks 활용
-- [ ]  PropTypes 활용
+- [x]  React Hooks 활용
+- [x]  PropTypes 활용
 - [x]  CSS 모듈
 
 <br />

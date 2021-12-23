@@ -1,14 +1,24 @@
 import styles from './Dialog.module.css';
 import { useRef, useEffect, useCallback } from 'react';
 import {
+  // number,
   string,
-  node,
-  elementType,
   bool,
-  any,
   func,
+  // array,
+  // object,
+  // symbol,
+  elementType,
+  // element,
+  node,
+  // instanceOf,
   oneOf,
   oneOfType,
+  // arrayOf
+  // objectOf
+  // shape,
+  // exact,
+  any,
 } from 'prop-types';
 import { createPortal } from 'react-dom';
 import { getTabbableElements, classNames } from 'utils';
