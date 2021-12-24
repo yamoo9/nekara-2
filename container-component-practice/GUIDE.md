@@ -29,6 +29,13 @@
 
 useCallback으로 함수를 기억하는데, useMemo는 보통 언제 사용하나요?
 
+<details>
+  <summary>답변</summary>
+
+  useMemo 훅은 어떤 값을 기억할 때 사용합니다. (함수를 포함한 모든 값)  
+  useCallback 또한 값을 기억할 때 사용하는 점은 비슷하지만 "함수만 기억"합니다.
+</details>
+
 ## 학습 가이드
 
 - [x]  focusableOrTabbable.js 리마인드
