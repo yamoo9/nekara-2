@@ -1,0 +1,124 @@
+.component {
+  box-sizing: border-box;
+  position: relative;
+  min-height: 440px;
+}
+
+.component,
+.component::before,
+.component::after,
+.component *,
+.component *::before,
+.component *::after {
+  transition: all 0.6s cubic-bezier(0.79, 0.14, 0.15, 0.86) 0.05s;
+}
+
+.component::before,
+.component::after,
+.component a::before,
+.component a::after {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  z-index: 10;
+}
+
+.component::before {
+  top: 5%;
+  left: 5%;
+  width: 0%;
+  border-bottom: 1px solid #fff;
+}
+
+.component::after {
+  top: 5%;
+  left: 5%;
+  height: 0%;
+  border-left: 1px solid #fff;
+}
+
+.component a {
+  box-sizing: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  text-decoration: none;
+  color: #fff;
+  background: #000;
+}
+
+.component a:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #acacac, inset 0 0 0 12px #fff;
+  transition-duration: 0.3s;
+  transition-delay: 0s;
+}
+
+.component a:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.component a::before {
+  bottom: 5%;
+  left: 5%;
+  width: 0%;
+  border-bottom: 1px solid #fff;
+}
+
+.component a::after {
+  top: 5%;
+  right: 5%;
+  height: 0%;
+  border-left: 1px solid #fff;
+}
+
+.title {
+  margin: 0 0 40px;
+  line-height: 1.2;
+  font-size: 1.875rem;
+  font-weight: 300;
+}
+
+.linkText {
+  display: inline-block;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 4px;
+  font-size: 1.25rem;
+}
+
+.linkText::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  width: 0%;
+  border-bottom: 1px solid #fff;
+}
+
+.linkText span {
+  font-weight: 900;
+}
+
+.component a:hover .linkText::before,
+.component a:focus .linkText::before {
+  width: 100%;
+}
+
+.component:hover::before,
+.component:focus-within::before,
+.component a:hover::before,
+.component:focus-within a::before {
+  opacity: 1;
+  width: 90%;
+}
+
+.component:hover::after,
+.component:focus-within::after,
+.component a:hover::after,
+.component:focus-within a::after {
+  opacity: 1;
+  height: 90%;
+}

@@ -1,12 +1,5 @@
-import { SkHeading, SkLoading } from 'components';
-import { useState } from 'react';
+import { SkSection } from 'containers';
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  return (
-    <>
-      <SkHeading as="h3">gateway</SkHeading>
-      {isLoading && <SkLoading type="grow" />}
-    </>
-  );
+  return <SkSection />;
 }

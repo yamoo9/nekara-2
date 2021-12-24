@@ -10,3 +10,4 @@ export async function getApi(endpoint) {
 }
 
 export const getTiltCard = async () => getApi('tiltcard');
+export const getSkCards = async () => getApi('sk');
