@@ -42,6 +42,8 @@
     ]
   },
   "devDependencies": {
-    "@types/vanilla-tilt": "^1.6.2"
+    "@types/vanilla-tilt": "^1.6.2",
+    "babel-plugin-styled-components": "^2.0.2",
+    "styled-components": "^5.3.3"
   }
 }
