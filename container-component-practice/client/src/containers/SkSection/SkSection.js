@@ -4,7 +4,11 @@ import { SkHeading, SkLoading, SkSectionCard } from 'components';
 import { getSkCards } from 'api';
 // import { delay } from 'utils';
 
-export function SkSection() {
+interface SkSectionProps {
+  cards: SectionItem[];
+}
+
+export function SkSection(props: SkSectionProps) {
   // isLoading
   const [isLoading, setIsLoading] = useState(true);
   // error

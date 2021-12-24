@@ -1,24 +1,47 @@
 import styles from './SkSectionCard.module.css';
-import { exact, string } from 'prop-types';
+import { Fragment } from 'react';
+import { shape, exact, string, arrayOf } from 'prop-types';
 
-export function SkSectionCard() {
+export function SkSectionCard({ item: { id, title, link, cover } }) {
   return (
-    <article className={styles.component} aria-labelledby="gateway-03">
-      <a href="http://sk.com/ko/careers/careers.jsp" title="채용으로 이동">
-        <h3 id="gateway-03" className={styles.title}>
-          사람이 자원인 나라
-          <br />그 사람을 키우는 SK
+    <article className={styles.component} aria-labelledby={id}>
+      <a href={link.href} title={`${link.text}${link.cheon} 이동`}>
+        <h3 id={id} className={styles.title}>
+          {title.map((content, index) => (
+            <Fragment key={content}>
+              {content}
+              {index < title.length - 1 && <br />}
+            </Fragment>
+          ))}
         </h3>
         <div className={styles.linkText}>
-          <span>채용</span> 바로가기
+          <span>{link.text}</span> 바로가기
         </div>
       </a>
     </article>
   );
 }
 
-// SkSectionCard.propTypes = {
-//   item: exact({
-//     id: string,
-//   }),
-// };
+// {
+//   "id": "gateway-01",
+//   "title": ["SK의 다양한", "소식을", "전합니다"],
+//   "link": {
+//     "text": "SK뉴스",
+//     "cheon": "로",
+//     "href": "http://sk.com/ko/media/news.jsp"
+//   },
+//   "cover": "laptop.jpg"
+// }
+
+SkSectionCard.propTypes = {
+  item: shape({
+    id: string,
+    titie: arrayOf(string),
+    link: exact({
+      text: string,
+      cheon: string,
+      href: string,
+    }),
+    cover: string,
+  }),
+};
