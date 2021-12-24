@@ -1,11 +1,25 @@
 import styles from './SkSectionCard.module.css';
 import { Fragment } from 'react';
 import { shape, exact, string, arrayOf } from 'prop-types';
+import { getPublicAsset } from 'utils';
 
-export function SkSectionCard({ item: { id, title, link, cover } }) {
+export function SkSectionCard({
+  item: { id, title, link, cover },
+  ...restProps
+}) {
+  const coverStyle = {
+    background: `url(${getPublicAsset(
+      `gateway/${cover}`
+    )}) no-repeat left top / cover`,
+  };
+
   return (
-    <article className={styles.component} aria-labelledby={id}>
-      <a href={link.href} title={`${link.text}${link.cheon} 이동`}>
+    <article className={styles.component} aria-labelledby={id} {...restProps}>
+      <a
+        href={link.href}
+        title={`${link.text}${link.cheon} 이동`}
+        style={coverStyle}
+      >
         <h3 id={id} className={styles.title}>
           {title.map((content, index) => (
             <Fragment key={content}>
@@ -21,17 +35,6 @@ export function SkSectionCard({ item: { id, title, link, cover } }) {
     </article>
   );
 }
-
-// {
-//   "id": "gateway-01",
-//   "title": ["SK의 다양한", "소식을", "전합니다"],
-//   "link": {
-//     "text": "SK뉴스",
-//     "cheon": "로",
-//     "href": "http://sk.com/ko/media/news.jsp"
-//   },
-//   "cover": "laptop.jpg"
-// }
 
 SkSectionCard.propTypes = {
   item: shape({
