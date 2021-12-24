@@ -1,6 +1,6 @@
 // module css
 import styles from './SkHeading.module.css';
-import React from 'react';
+import { useMemo } from 'react';
 import { useRef, useEffect } from 'react';
 import { string, func } from 'prop-types';
 import { classNames } from 'utils';
@@ -12,6 +12,7 @@ const SkHeading = ({
   className,
   onClick,
   children,
+  memoizedValue,
   ...restProps
 }) => {
   // useRef 훅을 사용해 최초 전달된 props 중 onClick prop을 기억(memo)
@@ -45,16 +46,20 @@ const SkHeading = ({
   // 그리고 컴포넌트가 다시 렌더링 되었을 때, 새롭게 전달된 onClick prop이
   // useRef에 의해 이전에 기억된 값과 동일한지 검증해보자.
 
-  return (
-    <Comp
-      className={classNames(styles.headline, className)}
-      tabIndex={onClick && 0}
-      onClick={onClick}
-      {...restProps}
-    >
-      <span className={styles.SK}>SK</span>
-      <span className={styles.title}>{children}</span>
-    </Comp>
+  return useMemo(
+    () => (
+      <Comp
+        className={classNames(styles.headline, className)}
+        tabIndex={onClick && 0}
+        onClick={onClick}
+        {...restProps}
+      >
+        <span className={styles.SK}>SK</span>
+        <span className={styles.title}>{children}</span>
+      </Comp>
+    ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 };
 

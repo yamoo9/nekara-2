@@ -40,12 +40,12 @@ useCallback으로 함수를 기억하는데, useMemo는 보통 언제 사용하�
 
 - [x]  focusableOrTabbable.js 리마인드
 - [x]  PropTypes 검사 도구
-- [ ]  React Hooks
+- [x]  React Hooks
   - [x]  useState
   - [x]  useEffect
   - [x]  useRef
   - [x]  useCallback
-  - [ ]  useMemo
+  - [x]  useMemo
 - React 고차 컴포넌트
   - [x]  forwardRef
   - [ ]  memo
