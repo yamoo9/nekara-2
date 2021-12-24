@@ -25,16 +25,26 @@
 
 <br />
 
+## 지난 시간 마지막 질문
+
+useCallback으로 함수를 기억하는데, useMemo는 보통 언제 사용하나요?
+
 ## 학습 가이드
 
-- focusableOrTabbable.js 리마인드
-- React Hooks 리마인드 
-  - useState
-  - useEffect
-- PropTypes 검사 도구
-- React 이벤트 핸들링
-- React 스타일 방법론
-- React 폼 컨트롤
+- [x]  focusableOrTabbable.js 리마인드
+- [x]  PropTypes 검사 도구
+- [ ]  React Hooks
+  - [x]  useState
+  - [x]  useEffect
+  - [x]  useRef
+  - [x]  useCallback
+  - [ ]  useMemo
+- React 고차 컴포넌트
+  - [x]  forwardRef
+  - [ ]  memo
+- [ ]  React 이벤트 핸들링
+- [ ]  React 스타일 방법론
+- [ ]  React 폼 컨트롤
 
 <br />
 
