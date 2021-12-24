@@ -95,26 +95,26 @@ useCallback으로 함수를 기억하는데, useMemo는 보통 언제 사용하�
 
 - [x]  로딩 접근성 (영상 시청)
 - [x]  Portal의 필요성 재고
-- [ ]  React Hooks 활용
-- [ ]  PropTypes 활용
-- [ ]  CSS 모듈
+- [x]  React Hooks 활용
+- [x]  PropTypes 활용
+- [x]  CSS 모듈
 
 <br />
 
 ## SkSection 컴포넌트
 
-- [ ]  React Hooks 활용
-- [ ]  PropTypes 활용
-- [ ]  CSS 모듈
-- [ ]  상태 관리
-- [ ]  네트워크 통신 (비동기 요청)
+- [x]  React Hooks 활용
+- [x]  PropTypes 활용
+- [x]  CSS 모듈
+- [x]  상태 관리
+- [x]  네트워크 통신 (비동기 요청)
 
 <br />
 
 ## SkCard 컴포넌트
 
-- [ ]  React Hooks 활용
-- [ ]  PropTypes 활용
-- [ ]  CSS 모듈
-- [ ]  데이터 바인딩
+- [x]  React Hooks 활용
+- [x]  PropTypes 활용
+- [x]  CSS 모듈
+- [x]  데이터 바인딩
 
