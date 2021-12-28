@@ -48,10 +48,9 @@ useCallback으로 함수를 기억하는데, useMemo는 보통 언제 사용하�
   - [x]  useMemo
 - React 고차 컴포넌트
   - [x]  forwardRef
-  - [ ]  memo
+  - [x]  memo
 - [x]  React 이벤트 핸들링
-- [ ]  React 스타일 방법론
-- [ ]  React 폼 컨트롤
+- [x]  React 스타일 방법론
 
 <br />
 
