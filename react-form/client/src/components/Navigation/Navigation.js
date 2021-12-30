@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { string } from 'prop-types';
 import { NavigationItemsType } from './Navigation.types';
-import { Container, List, Item, Link } from './Navigation.styled';
+import {
+  Container,
+  List,
+  Item,
+  Link,
+  activeClassName,
+} from './Navigation.styled';
 import { A11yHidden } from 'components';
-
-const isActivePage = (pathname) => pathname === window.location.pathname;
 
 export function Navigation({
   id = 'global-navigation',
@@ -21,9 +25,7 @@ export function Navigation({
       <List>
         {items.map((item) => (
           <Item key={item.text}>
-            <Link href={item.to} className={isActivePage(item.to) && 'active'}>
-              {item.text}
-            </Link>
+            <Link to={item.to}>{item.text}</Link>
           </Item>
         ))}
       </List>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { px2rem } from 'styles/utils';
 import { Wrapper as GlobalWrapper } from 'styles/common.styled';
 const styled = require('styled-components/macro');
@@ -14,7 +15,7 @@ export const Wrapper = styled(GlobalWrapper)`
 `;
 
 const size = 30;
-export const HomeLink = styled.a`
+export const HomeLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;

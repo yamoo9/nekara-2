@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { getPrimaryColor, getGrayColor, hex2rgba } from 'styles/utils';
 
 const styled = require('styled-components/macro');
@@ -21,8 +22,9 @@ export const Item = styled.li`
 
 const primaryHover = getPrimaryColor(300);
 const primaryActive = getPrimaryColor(400);
+// export let activeClassName = 'is-active';
 
-export const Link = styled.a`
+export const Link = styled(NavLink)`
   display: block;
   padding: 0.6em 0.1em;
   width: clamp(1rem, 20vw, 5rem);

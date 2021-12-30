@@ -4,14 +4,14 @@ import { viewport } from './theme';
 
 /* -------------------------------------------------------------------------- */
 
+export const flexMixin = css`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
 export const Wrapper = styled.div`
-  ${({ flex }) =>
-    flex &&
-    css`
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-    `}
+  ${({ flex }) => flex && flexMixin}
   width: clamp(${px2rem(viewport.min)}, 100vw, ${px2rem(viewport.max)});
   margin-left: auto;
   margin-right: auto;

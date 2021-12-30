@@ -19,7 +19,7 @@ export function Header() {
   return (
     <Container>
       <Wrapper flex>
-        <HomeLink href={navigationItems.find(({ text }) => text === '홈').to}>
+        <HomeLink to="/">
           <Logo title={logoLabel} />
         </HomeLink>
         <Navigation items={navigationItems} />
