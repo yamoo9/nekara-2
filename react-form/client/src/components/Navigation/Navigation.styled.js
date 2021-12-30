@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getPrimaryColor, getGrayColor, hex2rgba } from 'styles/utils';
 
@@ -22,9 +23,28 @@ export const Item = styled.li`
 
 const primaryHover = getPrimaryColor(300);
 const primaryActive = getPrimaryColor(400);
-// export let activeClassName = 'is-active';
 
-export const Link = styled(NavLink)`
+const LinkWrapper = forwardRef(
+  ({ activeClassName, activeStyle, className, style, ...restProps }, ref) => {
+    return (
+      <NavLink
+        ref={ref}
+        className={({ isActive }) =>
+          [className, isActive ? activeClassName : null]
+            .filter(Boolean)
+            .join(' ')
+        }
+        style={({ isActive }) => ({
+          ...style,
+          ...(isActive ? activeStyle : null),
+        })}
+        {...restProps}
+      />
+    );
+  }
+);
+
+export const Link = styled(LinkWrapper)`
   display: block;
   padding: 0.6em 0.1em;
   width: clamp(1rem, 20vw, 5rem);
@@ -39,7 +59,7 @@ export const Link = styled(NavLink)`
     background: ${hex2rgba(primaryHover, 0.05)};
   }
 
-  &.active {
+  &.${({ activeClassName }) => (activeClassName ? activeClassName : 'active')} {
     color: ${primaryActive};
     background: ${hex2rgba(primaryActive, '10%')};
   }
