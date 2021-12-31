@@ -1,14 +1,11 @@
 import 'styled-components/macro';
-import { useState, useCallback, useMemo, useEffect } from 'react';
+import { useState, useCallback, useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FormInput } from 'components';
 import { setDocumentTitle } from 'utils';
 
 export function SignIn() {
-  useEffect(() => {
-    setDocumentTitle('로그인');
-  }, []);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -80,6 +77,9 @@ export function SignIn() {
 
   return (
     <>
+      <Helmet>
+        <title>{setDocumentTitle('로그인')}</title>
+      </Helmet>
       <h2>로그인 폼</h2>
       <form
         onSubmit={handleSubmit}
