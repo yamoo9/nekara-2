@@ -6,8 +6,10 @@ import { Control, Label, Input } from './FormInput.styled';
 export function FormInput({
   id,
   label,
-  type = 'text',
   invisibleLabel = false,
+  type = 'text',
+  value = null,
+  onChange = null,
   children = null,
   forwardRef = null,
   inputProps = {},
@@ -24,9 +26,12 @@ export function FormInput({
       )}
       <Input
         ref={forwardRef}
-        type={type}
         id={id}
+        type={type}
         placeholder={children}
+        value={value}
+        onChange={onChange}
+        readOnly={value && !onChange}
         {...inputProps}
       />
     </Control>

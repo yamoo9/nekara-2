@@ -6,14 +6,27 @@ import { FormInput } from 'components';
 export function SignIn() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('yamoo9@naver.com');
+  const [password, setPassword] = useState('0000');
 
   useEffect(() => {
-    // console.log('mounted');
-    // console.log('emailRef.current:', emailRef.current);
-    // console.log('passwordRef.current:', passwordRef.current);
+    // console.log('emailRef.current = ', emailRef.current);
+    // console.log('passwordRef.current = ', passwordRef.current);
   }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      default:
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+    }
+  };
 
   return (
     <>
@@ -30,7 +43,12 @@ export function SignIn() {
           type="email"
           id="userMail"
           label="이메일"
-          inputProps={{ autoComplete: 'user-name' }}
+          inputProps={{
+            autoComplete: 'user-name',
+            name: 'email',
+            value: email,
+            onChange: handleChange,
+          }}
         >
           yamoo9@naver.com
         </FormInput>
@@ -40,7 +58,12 @@ export function SignIn() {
           type="password"
           id="userPass"
           label="패스워드"
-          inputProps={{ autoComplete: 'current-password' }}
+          inputProps={{
+            autoComplete: 'current-password',
+            name: 'password',
+            value: password,
+            onChange: handleChange,
+          }}
         >
           대소문자 조합 6자리 이상 입력하세요.
         </FormInput>
