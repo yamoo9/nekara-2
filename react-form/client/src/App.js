@@ -1,8 +1,8 @@
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Layout } from 'components';
 import { Home, SignIn, SignUp } from 'pages';
 
 function PageNotFound(props) {
-  console.log(props);
   return (
     <div role="alert">
       <h2>페이지를 찾을 수가 없습니다.</h2>
@@ -14,17 +14,16 @@ function PageNotFound(props) {
 export default function App() {
   return (
     <Routes>
-      {/* HOC, render props pattern */}
-      {/* children, component ???? → element */}
-      <Route path="/" element={<Home />} />
-      <Route path="signin" element={<SignIn />} />
-      <Route path="signup" element={<SignUp />} />
-      <Route path="page-not-found" element={<PageNotFound />} />
-      {/* Redirect (v5) → Navigate (v6) 컴포넌트 활용 */}
-      <Route
-        path="*"
-        element={<Navigate to="page-not-found" replace={true} />}
-      />
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="signin" element={<SignIn animate={true} />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="page-not-found" element={<PageNotFound />} />
+        <Route
+          path="*"
+          element={<Navigate to="page-not-found" replace={true} />}
+        />
+      </Route>
     </Routes>
   );
 }
