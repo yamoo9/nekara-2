@@ -19,9 +19,7 @@ export function Navigation({
       <List>
         {items.map((item) => (
           <Item key={item.text}>
-            <Link to={item.to} activeClassName="is-active">
-              {item.text}
-            </Link>
+            <Link to={item.to}>{item.text}</Link>
           </Item>
         ))}
       </List>

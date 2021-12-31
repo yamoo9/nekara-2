@@ -25,7 +25,10 @@ const primaryHover = getPrimaryColor(300);
 const primaryActive = getPrimaryColor(400);
 
 const LinkWrapper = forwardRef(
-  ({ activeClassName, activeStyle, className, style, ...restProps }, ref) => {
+  (
+    { activeClassName = 'active', activeStyle, className, style, ...restProps },
+    ref
+  ) => {
     return (
       <NavLink
         ref={ref}

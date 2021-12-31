@@ -1,13 +1,16 @@
 import './reportWebVitals';
-import { GlobalStyle } from 'styles/global.styled';
 import { StrictMode } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { GlobalStyle } from 'styles/global.styled';
 import { render } from 'react-dom';
 import App from 'App';
 
 render(
   <StrictMode>
     <GlobalStyle />
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById('root')
 );
