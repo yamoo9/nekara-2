@@ -2,12 +2,14 @@ import 'styled-components/macro';
 import { useState, useCallback, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { FormInput } from 'components';
+import { FormInput, A11yHidden } from 'components';
 import { setDocumentTitle } from 'utils';
 
 export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [comment, setComment] = useState('');
+  const [gender, setGender] = useState('');
 
   // 컴포넌트가 리 렌더링 될 때 마다, 성능 저하를 막기 위해서
   const handleChange = useCallback((e) => {
@@ -20,17 +22,25 @@ export function SignIn() {
       case 'password':
         setPassword(value);
         break;
+      case 'comment':
+        setComment(value);
+        break;
+      case 'gender':
+        setGender(value);
+        break;
     }
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password });
+    console.log({ email, password, comment, gender });
   };
 
   const handleReset = (e) => {
     setEmail('');
     setPassword('');
+    setComment('');
+    setGender('');
   };
 
   // 컴포넌트(값) 메모
@@ -91,6 +101,39 @@ export function SignIn() {
       >
         {memoizedEmail}
         {memoizedPassword}
+
+        <A11yHidden as="label" htmlFor="gender">
+          Gender
+        </A11yHidden>
+        <select
+          name="gender"
+          id="gender"
+          value={gender}
+          onChange={handleChange}
+        >
+          <option value="">당신의 성별은?</option>
+          <option value="female">여성</option>
+          <option value="male">남성</option>
+        </select>
+
+        <A11yHidden as="label" htmlFor="comment">
+          Comment
+        </A11yHidden>
+        <textarea
+          css={`
+            display: block;
+            margin-bottom: 4px;
+            resize: vertical;
+            width: 100%;
+          `}
+          name="comment"
+          value={comment}
+          onChange={handleChange}
+          id="comment"
+          cols="30"
+          rows="10"
+        />
+
         <button type="submit" disabled={isAllInputed}>
           로그인
         </button>
