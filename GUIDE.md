@@ -9,7 +9,8 @@ React 애플리케이션에서 폼을 컨트롤 하는 방법을 학습합니다
   - 스타일 컴포넌트 합성
 - [x]  클라이언트 사이드 라우팅 (with React Router)
   - 홈, 회원가입 폼, 로그인 폼 페이지 구성
-- [ ]  React 컨트롤(controlled) 컴포넌트
+  - 페이지 별 제목 설정 및 SEO 설정
+- [x]  React 컨트롤(controlled) 컴포넌트
 - [ ]  React 언컨트롤(uncontrolled) 컴포넌트
 - [x]  Backend 구성 (Node.js, Express, MongoDB)
 - [x]  Header 컴포넌트 구성 (Navigation 포함)

@@ -19,9 +19,14 @@ export const GlobalStyle = createGlobalStyle`
     vertical-align: middle;
   }
 
+  [disabled] {
+    cursor: not-allowed;
+  }
+  
   button {
     cursor: pointer;
   }
+
 
   button:focus:not(:focus-visible) {
     outline: none;

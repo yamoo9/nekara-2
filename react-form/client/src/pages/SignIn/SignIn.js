@@ -1,11 +1,16 @@
 import 'styled-components/macro';
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FormInput } from 'components';
+import { setDocumentTitle } from 'utils';
 
 export function SignIn() {
-  const [email, setEmail] = useState('yamoo9@naver.com');
-  const [password, setPassword] = useState('0000');
+  useEffect(() => {
+    setDocumentTitle('로그인');
+  }, []);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // 컴포넌트가 리 렌더링 될 때 마다, 성능 저하를 막기 위해서
   const handleChange = useCallback((e) => {
@@ -24,6 +29,11 @@ export function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ email, password });
+  };
+
+  const handleReset = (e) => {
+    setEmail('');
+    setPassword('');
   };
 
   // 컴포넌트(값) 메모
@@ -65,6 +75,9 @@ export function SignIn() {
     [password, handleChange]
   );
 
+  // 파생 상태
+  let isAllInputed = !(email.trim().length > 0 && password.trim().length > 0);
+
   return (
     <>
       <h2>로그인 폼</h2>
@@ -78,7 +91,12 @@ export function SignIn() {
       >
         {memoizedEmail}
         {memoizedPassword}
-        <button type="submit">로그인</button>
+        <button type="submit" disabled={isAllInputed}>
+          로그인
+        </button>
+        <button type="reset" onClick={handleReset}>
+          입력 초기화
+        </button>
       </form>
       <p>
         회원가입 정보가 없다면? <Link to="/signup">회원가입</Link> 페이지로
