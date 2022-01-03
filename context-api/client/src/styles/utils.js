@@ -39,9 +39,8 @@ export const getColor = (type, step) => {
 };
 
 export const getPrimaryColor = (step) => getColor('primary', step);
-
+export const getSecondaryColor = (step) => getColor('secondary', step);
 export const getErrorColor = (step) => getColor('error', step);
-
 export const getGrayColor = (step) => getColor('gray', step);
 
 /* 컬러 변환 -------------------------------------------------------------------- */
