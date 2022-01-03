@@ -1,10 +1,11 @@
 import './reportWebVitals';
 import { StrictMode } from 'react';
+import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+
 import { GlobalStyle } from 'styles/global.styled';
-import { render } from 'react-dom';
-import { AuthProvider } from 'contexts';
+import { AuthProvider, ThemeProvider } from 'contexts';
 import App from 'App';
 
 render(
@@ -12,9 +13,11 @@ render(
     <GlobalStyle />
     <BrowserRouter>
       <HelmetProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </ThemeProvider>
       </HelmetProvider>
     </BrowserRouter>
   </StrictMode>,

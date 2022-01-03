@@ -17,8 +17,8 @@ React 애플리케이션에서 Context API를 사용해 상태를 관리하는 �
   - [x]  Context API를 사용한 상태 관리
     - [x]  인증 사용자 정보
   - [x]  로그아웃 (SignOut)
-- [ ]  Context API를 사용한 테마 관리
+- [ ]  lazyComponent 유틸리티 함수
+- [ ]  Context API를 사용한 테마 관리 (리뷰)
   - [ ]  테마 공급자 (Theme Provider)
-  - [ ]  styled-components 라이브러리 테마 관리
-    - [ ]  ThemeProvider
+- [ ]  styled-components 라이브러리 테마 관리
 - [ ]  [constate](https://github.com/diegohaz/constate) 라이브러리를 활용한 상태 관리

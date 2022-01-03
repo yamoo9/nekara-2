@@ -2,11 +2,20 @@ import 'styled-components/macro';
 import { useRef, useState, useLayoutEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { number } from 'prop-types';
+
 import { Container, Wrapper } from './Layout.styled';
+import { useTheme } from 'contexts';
 import { Header } from 'components';
 
+/* -------------------------------------------------------------------------- */
+/* Layout                                                                     */
+/* -------------------------------------------------------------------------- */
+
 export default function Layout({ offset }) {
+  const { theme } = useTheme();
+
   const headerRef = useRef(null);
+
   let [headerHeight, setHeaderHeight] = useState(0);
 
   useLayoutEffect(() => {
@@ -15,8 +24,8 @@ export default function Layout({ offset }) {
   }, [offset]);
 
   return (
-    <Container>
-      <Header ref={headerRef} blur />
+    <Container theme={theme}>
+      <Header ref={headerRef} theme={theme} />
       <Wrapper
         as="main"
         css={`

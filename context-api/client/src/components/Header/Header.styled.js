@@ -9,8 +9,8 @@ export const Container = styled.header`
   top: 0;
   left: 0;
   width: 100vw;
-  background: ${hex2rgba(getColor('white'), 0.7)};
-  box-shadow: 0 4px 10px rgba(0 0 0 / 10%);
+  background: ${({ blur }) => hex2rgba(getColor('white'), blur ? 0.85 : 1)};
+  box-shadow: 0 4px 10px ${({ theme }) => hex2rgba(theme.color, 0.1)};
   backdrop-filter: ${({ blur }) => blur && 'blur(2px)'};
 `;
 

@@ -1,6 +1,8 @@
 import 'styled-components/macro';
 import { forwardRef, memo } from 'react';
 import { string, bool, object, oneOf } from 'prop-types';
+
+import { useTheme } from 'contexts';
 import { A11yHidden } from 'components';
 import {
   Form as StyledForm,
@@ -22,7 +24,8 @@ import {
 
 export const Form = memo(
   forwardRef(function Form({ css, ...resetProps }, ref) {
-    return <StyledForm ref={ref} css={css} {...resetProps} />;
+    const { theme } = useTheme();
+    return <StyledForm theme={theme} ref={ref} css={css} {...resetProps} />;
   })
 );
 
@@ -37,7 +40,8 @@ Form.Container = memo(function FormContainer(props) {
 /* FormHeadline                                                              */
 /* -------------------------------------------------------------------------- */
 Form.Headline = memo(function FormHeadline(props) {
-  return <Headline {...props} />;
+  const { theme } = useTheme();
+  return <Headline theme={theme} {...props} />;
 });
 
 /* -------------------------------------------------------------------------- */
@@ -59,7 +63,9 @@ Form.Input = memo(
     },
     ref
   ) {
+    const { theme } = useTheme();
     let descId = `${id}__desc`;
+
     return (
       <Control {...controlProps}>
         {invisibleLabel ? (
@@ -67,9 +73,12 @@ Form.Input = memo(
             {label}
           </A11yHidden>
         ) : (
-          <Label htmlFor={id}>{label}</Label>
+          <Label theme={theme} htmlFor={id}>
+            {label}
+          </Label>
         )}
         <Input
+          theme={theme}
           ref={ref}
           id={id}
           type={type}
@@ -105,6 +114,7 @@ Form.Input.propTypes = {
   success: bool,
   children: string,
   controlProps: object,
+  theme: object,
 };
 
 /* -------------------------------------------------------------------------- */
@@ -113,11 +123,21 @@ Form.Input.propTypes = {
 
 Form.Button = memo(
   forwardRef(function FormButton({ submit, reset, css, ...restProps }, ref) {
+    const { theme } = useTheme();
+
     let buttonType = 'button';
     if (submit) buttonType = 'submit';
     if (reset) buttonType = 'reset';
 
-    return <Button ref={ref} type={buttonType} css={css} {...restProps} />;
+    return (
+      <Button
+        theme={theme}
+        ref={ref}
+        type={buttonType}
+        css={css}
+        {...restProps}
+      />
+    );
   })
 );
 
@@ -128,6 +148,7 @@ Form.Button.defaultProps = {
 };
 
 Form.Button.propTypes = {
+  theme: object,
   submit: bool,
   reset: bool,
   css: string,
@@ -139,6 +160,7 @@ Form.Button.propTypes = {
 
 Form.Info = memo(
   forwardRef(function FormInfo(props, ref) {
-    return <Info ref={ref} {...props} />;
+    const { theme } = useTheme();
+    return <Info ref={ref} theme={theme} {...props} />;
   })
 );

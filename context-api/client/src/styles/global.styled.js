@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   body *::after {
     -webkit-tap-highlight-color: rgba(250 250 0 / 2%);
     box-sizing: border-box;
+    transition: all 0.1s ease;
   }
 
   img {

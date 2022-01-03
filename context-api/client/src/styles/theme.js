@@ -10,9 +10,11 @@ export const viewport = {
 
 export const colors = {
   primary: {
+    100: '#7af0cf',
     200: '#01966c',
     300: '#00684a',
     400: '#00424a',
+    500: '#08181a',
   },
 
   secondary: {

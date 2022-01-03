@@ -27,7 +27,11 @@ export const Container = styled.div`
 /* -------------------------------------------------------------------------- */
 
 export const Headline = styled.h2`
-  color: ${hex2rgba(getPrimaryColor(300), 0.8)};
+  color: ${({ theme }) =>
+    hex2rgba(
+      theme.mode === 'light' ? getPrimaryColor(300) : getPrimaryColor(200),
+      0.8
+    )};
 `;
 
 /* -------------------------------------------------------------------------- */
@@ -35,10 +39,15 @@ export const Headline = styled.h2`
 /* -------------------------------------------------------------------------- */
 
 export const Form = styled.form`
-  border: 6px solid ${hex2rgba(getPrimaryColor(300), 0.35)};
+  border: 6px solid
+    ${({ theme }) =>
+      hex2rgba(
+        theme.mode === 'light' ? getPrimaryColor(300) : getPrimaryColor(200),
+        0.7
+      )};
   border-radius: 12px;
   padding: 2rem;
-  background: ${getColor('white')};
+  background: ${({ theme }) => (theme ? theme.background : getColor('white'))};
 `;
 
 /* -------------------------------------------------------------------------- */
@@ -61,7 +70,8 @@ export const Label = styled.label`
   margin-bottom: 4px;
   font-size: ${px2rem(16)};
   font-weight: 700;
-  color: ${getGrayColor(400)};
+  color: ${({ theme }) =>
+    theme.mode === 'light' ? getGrayColor(400) : getGrayColor(200)};
 `;
 
 /* -------------------------------------------------------------------------- */
@@ -69,8 +79,6 @@ export const Label = styled.label`
 /* -------------------------------------------------------------------------- */
 
 export const Input = styled.input`
-  padding: 0.6em 0.6em;
-  font-size: 1rem;
   border: 0;
   border-bottom: 1px solid
     ${({ error, success }) => {
@@ -78,6 +86,10 @@ export const Input = styled.input`
       if (success) return getPrimaryColor(200);
       return getGrayColor(200);
     }};
+  padding: 0.6em 0.6em;
+  font-size: 1rem;
+  background: transparent;
+  color: ${({ theme }) => theme.color};
 
   &:focus {
     outline: none;
@@ -187,10 +199,11 @@ export const Button = styled.button`
 /* -------------------------------------------------------------------------- */
 
 export const Info = styled.p`
-  color: ${getGrayColor(500)};
+  color: ${({ theme }) => theme.color};
 
   a {
-    color: ${getPrimaryColor(400)};
+    color: ${({ theme }) =>
+      theme.mode === 'light' ? getPrimaryColor(400) : getPrimaryColor(200)};
     text-decoration: none;
     border-bottom: 1px solid transparent;
     padding-bottom: 0.005em;
@@ -199,7 +212,11 @@ export const Info = styled.p`
     &:focus {
       outline: none;
       border-bottom-width: 3px;
-      border-bottom-color: ${hex2rgba(getPrimaryColor(400), 0.45)};
+      border-bottom-color: ${({ theme }) =>
+        hex2rgba(
+          theme.mode === 'light' ? getPrimaryColor(400) : getPrimaryColor(200),
+          0.45
+        )};
     }
   }
 `;

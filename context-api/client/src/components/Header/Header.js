@@ -1,9 +1,15 @@
 import { useState, forwardRef } from 'react';
+import { bool, object } from 'prop-types';
+
 import { Container, Wrapper, HomeLink } from './Header.styled';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { Navigation } from 'components';
 
-export const Header = forwardRef(function Header({ blur }, ref) {
+/* -------------------------------------------------------------------------- */
+/* Header                                                                     */
+/* -------------------------------------------------------------------------- */
+
+export const Header = forwardRef(function Header({ theme, blur }, ref) {
   const [logoLabel] = useState('React Leaf Form');
   const [navigationItems] = useState([
     // {
@@ -21,7 +27,7 @@ export const Header = forwardRef(function Header({ blur }, ref) {
   ]);
 
   return (
-    <Container ref={ref} blur={blur}>
+    <Container ref={ref} theme={theme} blur={blur}>
       <Wrapper flex>
         <HomeLink to="/">
           <Logo title={logoLabel} />
@@ -31,3 +37,8 @@ export const Header = forwardRef(function Header({ blur }, ref) {
     </Container>
   );
 });
+
+Header.propTypes = {
+  theme: object,
+  blur: bool,
+};

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { string } from 'prop-types';
 import { NavigationItemsType } from './Navigation.types';
 import { Container, List, Item, Link, SignOut } from './Navigation.styled';
-import { A11yHidden } from 'components';
+import { A11yHidden, ThemeModeToggler } from 'components';
 import { useAuth } from 'contexts';
 
 export function Navigation({
@@ -40,6 +40,9 @@ export function Navigation({
             </Item>
           );
         })}
+        <Item>
+          <ThemeModeToggler />
+        </Item>
       </List>
     </Container>
   );
