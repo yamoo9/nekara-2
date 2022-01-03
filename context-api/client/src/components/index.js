@@ -1,4 +1,5 @@
 export * from './ThemeModeToggler/ThemeModeToggler';
+export * from './RequireAuth/RequireAuth';
 export * from './A11yHidden/A11yHidden';
 export * from './Navigation/Navigation';
 export * from './Loading/Loading';

@@ -7,7 +7,7 @@ import { string } from 'prop-types';
 import { isEmail, isInputed, isPassword, setDocumentTitle } from 'utils';
 import { Form } from 'components';
 import { signIn } from 'services';
-import { useSetAuthUser } from 'contexts';
+import { useSignIn } from 'contexts';
 
 /* -------------------------------------------------------------------------- */
 /* SignIn                                                                     */
@@ -15,7 +15,7 @@ import { useSetAuthUser } from 'contexts';
 
 export default function SignIn({ id, ...restProps }) {
   const navigate = useNavigate();
-  const setAuthUser = useSetAuthUser();
+  const signInOfContext = useSignIn();
 
   const formRef = useRef(null);
 
@@ -71,12 +71,12 @@ export default function SignIn({ id, ...restProps }) {
       signIn(requestData)
         .then(({ data }) => {
           const { name, email, isAdmin } = data;
-          setAuthUser({ name, email, isAdmin });
+          signInOfContext({ name, email, isAdmin });
           navigate('/authorized');
         })
         .catch((error) => console.error(error.message));
     },
-    [navigate, setAuthUser]
+    [navigate, signInOfContext]
   );
 
   const handleReset = useCallback((e) => {

@@ -4,21 +4,24 @@ import { string } from 'prop-types';
 import { NavigationItemsType } from './Navigation.types';
 import { Container, List, Item, Link, SignOut } from './Navigation.styled';
 import { A11yHidden, ThemeModeToggler } from 'components';
-import { useAuth } from 'contexts';
+import { useAuthUser, useSignOut } from 'contexts';
 
 export function Navigation({
   id = 'global-navigation',
   label = '글로벌 내비게이션',
   items: initialItems = [],
 }) {
-  const [items] = useState(initialItems);
-  const { authUser, setAuthUser } = useAuth();
+  const authUser = useAuthUser();
+  const signOut = useSignOut();
+
   const navigate = useNavigate();
 
+  const [items] = useState(initialItems);
+
   const handleSignOut = useCallback(() => {
-    setAuthUser(null);
+    signOut(null);
     navigate('/');
-  }, [setAuthUser, navigate]);
+  }, [signOut, navigate]);
 
   return (
     <Container aria-labelledby={id}>

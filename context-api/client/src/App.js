@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { useRoutes, Navigate } from 'react-router-dom';
-import { Loading } from 'components';
-import { RequireAuth } from 'contexts';
+import { Loading, RequireAuth } from 'components';
 
 /* -------------------------------------------------------------------------- */
 /* Lazy Loaded Components                                                     */
