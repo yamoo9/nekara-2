@@ -8,13 +8,15 @@ React 애플리케이션에서 Context API를 사용해 상태를 관리하는 �
 - [ ]  useLayoutEffect 훅, forwardRef 활용 (Layout 컴포넌트 리뷰)
 - [ ]  [react-loading-icons](https://loading.damiankress.de/?path=/story/sam-herbert-bars--demo) 활용 (Loading 컴포넌트 리뷰)
 - [ ]  컴파운드 컴포넌트 패턴 활용 (Form 컴포넌트 리뷰)
-- [ ]  페이지 별, 코드 스플리팅(Code Spliting)
+- [ ]  페이지 별, 코드 스플리팅([Code Spliting](https://reactjs.org/docs/code-splitting.html#code-splitting))
 - [ ]  로그인 폼 / 인증(Authentication)
   - [ ]  폼 유효성 검사
     - [ ]  유효성 검사 유틸리티
     - [ ]  [validator](https://www.npmjs.com/package/validator) 활용
+  - [ ]  프로그래밍 방식 내비게이션 ([useNavigate](https://reactrouter.com/docs/en/v6/api#usenavigate) 훅 활용)
   - [ ]  Context API를 사용한 상태 관리
     - [ ]  인증 사용자 정보
+  - [ ]  로그아웃 (SignOut)
 - [ ]  Context API를 사용한 테마 관리
   - [ ]  테마 공급자 (Theme Provider)
   - [ ]  styled-components 라이브러리 테마 관리
