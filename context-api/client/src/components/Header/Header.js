@@ -21,6 +21,10 @@ export const Header = forwardRef(function Header({ theme, blur }, ref) {
       to: '/authorized',
     },
     {
+      text: '테마 데모',
+      to: '/sc-theme-demo',
+    },
+    {
       text: '로그인',
       to: '/signin',
     },

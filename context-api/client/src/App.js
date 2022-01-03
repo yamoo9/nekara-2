@@ -12,6 +12,9 @@ const SignIn = lazy(() => import('./pages/SignIn/SignIn'));
 const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
 const Authorized = lazy(() => import('./pages/Authorized/Authorized'));
 const PageNotFound = lazy(() => import('./pages/PageNotFound/PageNotFound'));
+const StyledComponentThemeDemo = lazy(() =>
+  import('./pages/StyledComponentThemeDemo/StyledComponentThemeDemo')
+);
 
 /* -------------------------------------------------------------------------- */
 /* App                                                                        */
@@ -33,6 +36,7 @@ export default function App() {
             </RequireAuth>
           ),
         },
+        { path: 'sc-theme-demo', element: <StyledComponentThemeDemo /> },
         { path: 'page-not-found', element: <PageNotFound /> },
         { path: '*', element: <Navigate to="page-not-found" replace /> },
       ],
