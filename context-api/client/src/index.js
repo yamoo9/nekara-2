@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { GlobalStyle } from 'styles/global.styled';
 import { render } from 'react-dom';
+import { AuthProvider } from 'contexts';
 import App from 'App';
 
 render(
@@ -11,7 +12,9 @@ render(
     <GlobalStyle />
     <BrowserRouter>
       <HelmetProvider>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </HelmetProvider>
     </BrowserRouter>
   </StrictMode>,

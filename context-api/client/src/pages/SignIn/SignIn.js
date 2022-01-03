@@ -1,27 +1,56 @@
 import 'styled-components/macro';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { string } from 'prop-types';
 
-import { isInputed, setDocumentTitle } from 'utils';
+import { isEmail, isInputed, isPassword, setDocumentTitle } from 'utils';
 import { Form } from 'components';
+import { signIn } from 'services';
+import { useSetAuthUser } from 'contexts';
 
 /* -------------------------------------------------------------------------- */
 /* SignIn                                                                     */
 /* -------------------------------------------------------------------------- */
+
 export default function SignIn({ id, ...restProps }) {
+  const navigate = useNavigate();
+  const setAuthUser = useSetAuthUser();
+
+  const formRef = useRef(null);
+
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [emailSuccess, setEmailSuccess] = useState(false);
+
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState(false);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
 
     switch (name) {
       case 'email':
+        if (isEmail(value)) {
+          setEmailError('');
+          setEmailSuccess(true);
+        } else {
+          setEmailError('입력한 이메일 주소가 올바르지 않습니다.');
+          setEmailSuccess(false);
+        }
         setEmail(value);
         break;
       case 'password':
+        if (isPassword(value, { min: 8 })) {
+          setPasswordError('');
+          setPasswordSuccess(true);
+        } else {
+          setPasswordError(
+            '패스워드는 영문, 숫자 조합 8자리 이상 입력해야 합니다.'
+          );
+          setPasswordSuccess(false);
+        }
         setPassword(value);
         break;
       default:
@@ -31,9 +60,23 @@ export default function SignIn({ id, ...restProps }) {
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      console.log({ email, password });
+
+      const formData = new FormData(formRef.current);
+      const requestData = {};
+
+      for (let [key, value] of formData.entries()) {
+        requestData[key] = value;
+      }
+
+      signIn(requestData)
+        .then(({ data }) => {
+          const { name, email, isAdmin } = data;
+          setAuthUser({ name, email, isAdmin });
+          navigate('/authorized');
+        })
+        .catch((error) => console.error(error.message));
     },
-    [email, password]
+    [navigate, setAuthUser]
   );
 
   const handleReset = useCallback((e) => {
@@ -51,7 +94,7 @@ export default function SignIn({ id, ...restProps }) {
 
       <Form.Container>
         <Form.Headline id={id}>로그인 폼</Form.Headline>
-        <Form aria-labelledby={id} onSubmit={handleSubmit}>
+        <Form ref={formRef} aria-labelledby={id} onSubmit={handleSubmit}>
           <Form.Input
             type="email"
             id="userMail"
@@ -60,6 +103,8 @@ export default function SignIn({ id, ...restProps }) {
             name="email"
             value={email}
             onChange={handleChange}
+            success={emailSuccess}
+            error={emailError}
           >
             계정 이메일 주소를 올바르게 입력하세요.
           </Form.Input>
@@ -71,6 +116,8 @@ export default function SignIn({ id, ...restProps }) {
             name="password"
             value={password}
             onChange={handleChange}
+            success={passwordSuccess}
+            error={passwordError}
           >
             계정 비밀번호를 입력하세요.
           </Form.Input>

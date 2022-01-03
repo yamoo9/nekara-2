@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getPrimaryColor, getGrayColor, hex2rgba } from 'styles/utils';
+import { getPrimaryColor, getGrayColor, hex2rgba, px2rem } from 'styles/utils';
 
 const styled = require('styled-components/macro');
 
@@ -65,5 +65,22 @@ export const Link = styled(LinkWrapper)`
   &.${({ activeClassName }) => (activeClassName ? activeClassName : 'active')} {
     color: ${primaryActive};
     background: ${hex2rgba(primaryActive, '10%')};
+  }
+`;
+
+export const SignOut = styled.button`
+  width: clamp(1rem, 20vw, 5rem);
+  border: 0;
+  border-radius: 4px;
+  padding: 0.6em 0.1em;
+  font-weight: 700;
+  font-size: ${px2rem(16)};
+  line-height: 1.5;
+  color: ${getGrayColor(500)};
+  background: ${hex2rgba(getGrayColor(100), 0.2)};
+
+  &:hover {
+    color: ${primaryHover};
+    background: ${hex2rgba(primaryHover, 0.05)};
   }
 `;
