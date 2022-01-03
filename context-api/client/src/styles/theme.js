@@ -30,7 +30,7 @@ export const colors = {
   white: '#fff',
 
   gray: {
-    2100: '#e6e6e6',
+    100: '#e6e6e6',
     200: '#bebebe',
     300: '#949494',
     400: '#6e6e6e',

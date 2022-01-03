@@ -81,7 +81,11 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-bottom-color: ${getPrimaryColor(400)};
+    border-bottom-color: ${({ error, success }) => {
+      if (error) return getErrorColor(300);
+      if (success) return getPrimaryColor(200);
+      return getPrimaryColor(400);
+    }};
   }
 `;
 
