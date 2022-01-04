@@ -1,13 +1,40 @@
 import styles from './ReduxDemo.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet-async';
+import { cssVar, setDocumentTitle } from 'utils';
+import {
+  moveLeft as moveLeftAction,
+  moveRight as moveRightAction,
+  changeRandomBallColor as changeRandomBallColorAction,
+} from 'store/actionCreators/ball';
 
 export default function ReduxDemo(props) {
-  const moveLeft = (distanceX) => {};
-  const moveRight = (distanceX) => {};
-  const changeRandomBallColor = () => {};
+  // Redux 상태를 가져오기
+  const state = useSelector((state) => state);
+
+  // Redux 상태 업데이트를 요청할 dispatch 함수 가져오기
+  const dispatch = useDispatch();
+
+  const moveLeft = (distanceX) => {
+    dispatch(moveLeftAction(distanceX));
+  };
+
+  const moveRight = (distanceX) => {
+    dispatch(moveRightAction(distanceX));
+  };
+
+  const changeRandomBallColor = () => {
+    dispatch(changeRandomBallColorAction());
+    // cssVar('--color', state.color);
+  };
 
   return (
     <>
-      <pre className={styles.pre} />
+      <Helmet>
+        <title>{setDocumentTitle('Redux 데모')}</title>
+      </Helmet>
+
+      <pre className={styles.pre}>{JSON.stringify(state, null, 2)}</pre>
 
       <div className={styles.buttonGroup}>
         <button
@@ -33,7 +60,14 @@ export default function ReduxDemo(props) {
         </button>
       </div>
 
-      <div className={styles.circle} />
+      <div
+        className={styles.circle}
+        style={{
+          left: `${state.x}%`,
+          top: `${state.y}%`,
+          background: state.color,
+        }}
+      />
     </>
   );
 }
