@@ -17,13 +17,13 @@ React 애플리케이션에서 Context API를 사용해 상태를 관리하는 �
   - [x]  Context API를 사용한 상태 관리
     - [x]  인증 사용자 정보
   - [x]  로그아웃 (SignOut)
-- [ ]  lazyComponent 유틸리티 함수
-- [ ]  Context API를 사용한 테마 관리 (리뷰)
-  - [ ]  테마 공급자 (ThemeProvider)
-  - [ ]  커스텀 훅 (useTheme)
-- [ ]  styled-components 라이브러리 테마 관리
-  - [ ]  [ThemeProvider](https://styled-components.com/docs/api#themeprovider) 컴포넌트
-  - [ ]  [ThemeConsumer](https://styled-components.com/docs/api#themeconsumer) 컴포넌트 (render props 패턴)
-  - [ ]  [withTheme](https://styled-components.com/docs/api#withtheme) 고차 컴포넌트
-  - [ ]  [useTheme](https://styled-components.com/docs/api#usetheme) 훅
-- [ ]  [constate](https://github.com/diegohaz/constate) 라이브러리를 활용한 상태 관리
+- [x]  lazyComponent 유틸리티 함수
+- [x]  Context API를 사용한 테마 관리 (리뷰)
+  - [x]  테마 공급자 (ThemeProvider)
+  - [x]  커스텀 훅 (useTheme)
+- [x]  styled-components 라이브러리 테마 관리
+  - [x]  [ThemeProvider](https://styled-components.com/docs/api#themeprovider) 컴포넌트
+  - [x]  [ThemeConsumer](https://styled-components.com/docs/api#themeconsumer) 컴포넌트 (render props 패턴)
+  - [x]  [withTheme](https://styled-components.com/docs/api#withtheme) 고차 컴포넌트
+  - [x]  [useTheme](https://styled-components.com/docs/api#usetheme) 훅
+- [x]  [constate](https://github.com/diegohaz/constate) 라이브러리를 활용한 상태 관리
