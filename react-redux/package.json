@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start": "npx live-server redux-architecture --port=9000"
+  }
+}

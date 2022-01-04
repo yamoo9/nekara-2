@@ -1,0 +1,54 @@
+:root {
+  --color: #40acc8;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--color);
+  transform: translate(-50%, -50%);
+  transition: all 0.8s ease;
+}
+
+.buttonGroup {
+  position: fixed;
+  left: 50%;
+  bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 6px;
+  transform: translateX(-50%);
+}
+
+.button {
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: 0.8em 1.2em;
+  background: var(--color);
+  color: #fff;
+  font-size: 1rem;
+  text-shadow: 0 0 4px rgba(0 0 0 / 40%);
+  box-shadow: 0 3px 6px rgba(0 0 0 / 30%);
+}
+
+pre {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 200px;
+  border-radius: 6px;
+  margin: 0.5rem;
+  padding: 1rem 1.4rem;
+  background: var(--color);
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-shadow: 0 0 4px rgba(0 0 0 / 40%);
+  box-shadow: 0 3px 6px rgba(0 0 0 /30%);
+}
