@@ -30,19 +30,25 @@ export function Navigation({
       </A11yHidden>
       <List>
         {items.map((item) => {
-          let isAuthAndSignIn = authUser && item.to.includes('signin');
-          return (
-            <Item key={item.text}>
-              {!isAuthAndSignIn ? (
-                <Link to={item.to}>{item.text}</Link>
-              ) : (
-                <SignOut type="button" onClick={handleSignOut}>
-                  로그아웃
-                </SignOut>
-              )}
-            </Item>
-          );
+          let linkElement = null;
+
+          if (
+            (authUser && item.isAuthRequired) ||
+            (!authUser && !item.isAuthRequired) ||
+            item.alwaysDisplay
+          ) {
+            linkElement = <Link to={item.to}>{item.text}</Link>;
+          }
+
+          return <Item key={item.text}>{linkElement}</Item>;
         })}
+        {authUser && (
+          <Item>
+            <SignOut type="button" onClick={handleSignOut}>
+              로그아웃
+            </SignOut>
+          </Item>
+        )}
         <Item>
           <ThemeModeToggler />
         </Item>

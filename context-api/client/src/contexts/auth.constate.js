@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react';
 import constate from 'constate';
 
-const useAuthentication = (initialAuth = null) => {
-  const [authUser, setAuthUser] = useState(initialAuth);
+const useAuthentication = () => {
+  const [authUser, setAuthUser] = useState(null);
 
   const signIn = useCallback(
     (responseUserInfo) => setAuthUser(responseUserInfo),

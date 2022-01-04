@@ -12,21 +12,27 @@ import { Navigation } from 'components';
 export const Header = forwardRef(function Header({ theme, blur }, ref) {
   const [logoLabel] = useState('React Leaf Form');
   const [navigationItems] = useState([
-    // {
-    //   text: '홈',
-    //   to: '/',
-    // },
+    {
+      text: '홈',
+      to: '/',
+      isAuthRequired: false,
+      alwaysDisplay: true,
+    },
     {
       text: '인증',
       to: '/authorized',
+      isAuthRequired: true,
     },
     {
       text: '테마 데모',
       to: '/sc-theme-demo',
+      isAuthRequired: false,
+      alwaysDisplay: true,
     },
     {
       text: '로그인',
       to: '/signin',
+      isAuthRequired: false,
     },
   ]);
 
