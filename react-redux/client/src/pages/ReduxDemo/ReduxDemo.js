@@ -1,12 +1,12 @@
 import styles from './ReduxDemo.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet-async';
-import { cssVar, setDocumentTitle } from 'utils';
+import { setDocumentTitle } from 'utils';
 import {
   moveLeft as moveLeftAction,
   moveRight as moveRightAction,
   changeRandomBallColor as changeRandomBallColorAction,
-} from 'store/actionCreators/ball';
+} from 'store/slices/ball';
 
 export default function ReduxDemo(props) {
   // Redux 상태를 가져오기

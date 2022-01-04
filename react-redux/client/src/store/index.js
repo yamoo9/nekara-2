@@ -1,10 +1,10 @@
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import ballReducer from './slices/ball';
+import rootReducer from './slices';
 
 // 스토어 생성
 export const store = createStore(
-  ballReducer,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
