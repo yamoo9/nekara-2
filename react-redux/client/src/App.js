@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { useRoutes, Navigate } from 'react-router-dom';
 
 import { lazyComponent } from 'utils';
-import { Loading } from 'components';
+import { Loading, RequireAuth } from 'components';
 
 /* -------------------------------------------------------------------------- */
 /* Lazy Loaded Components                                                     */
@@ -31,7 +31,11 @@ export default function App() {
         { path: 'redux-demo', element: <ReduxDemo /> },
         {
           path: 'authorized',
-          element: <Authorized />,
+          element: (
+            <RequireAuth>
+              <Authorized />
+            </RequireAuth>
+          ),
         },
         { path: 'page-not-found', element: <PageNotFound /> },
         { path: '*', element: <Navigate to="page-not-found" replace /> },

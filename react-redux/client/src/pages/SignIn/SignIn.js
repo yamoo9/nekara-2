@@ -3,6 +3,9 @@ import { useState, useCallback, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { string } from 'prop-types';
+import { useDispatch } from 'react-redux';
+
+import { signInAction } from 'store/slices/auth';
 
 import { signIn } from 'services';
 import { isEmail, isPassword, setDocumentTitle } from 'utils';
@@ -13,6 +16,8 @@ import { Form } from 'components';
 /* -------------------------------------------------------------------------- */
 
 export default function SignIn({ id, ...restProps }) {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const formRef = useRef(null);
@@ -69,13 +74,15 @@ export default function SignIn({ id, ...restProps }) {
       signIn(requestData)
         .then(({ data }) => {
           const { name, email, isAdmin } = data;
-          console.log({ name, email, isAdmin });
+
+          // Redux의 스토어에 상태 업데이트 요청
+          dispatch(signInAction({ name, email, isAdmin }));
 
           navigate('/authorized');
         })
         .catch((error) => console.error(error.message));
     },
-    [navigate]
+    [navigate, dispatch]
   );
 
   const handleReset = useCallback((e) => {
