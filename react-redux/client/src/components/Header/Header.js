@@ -18,6 +18,10 @@ export const Header = forwardRef(function Header({ blur }, ref) {
       text: '로그인',
       to: '/signin',
     },
+    {
+      text: '리덕스데모',
+      to: '/redux-demo',
+    },
   ]);
 
   return (

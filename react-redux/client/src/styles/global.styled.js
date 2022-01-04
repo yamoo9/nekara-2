@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components/macro';
 
 export const GlobalStyle = createGlobalStyle`
+  :root {
+    --color: #267ac9;
+  }
+
   body {
     margin: 0;
     font: 1rem/1.5 'Spoqa Han Sans Neo', Aria, sans-serif;

@@ -12,6 +12,7 @@ const Home = lazyComponent('Home');
 const Layout = lazyComponent('Layout');
 const SignIn = lazyComponent('SignIn');
 const SignUp = lazyComponent('SignUp');
+const ReduxDemo = lazyComponent('ReduxDemo');
 const Authorized = lazyComponent('Authorized');
 const PageNotFound = lazyComponent('PageNotFound');
 
@@ -27,6 +28,7 @@ export default function App() {
         { path: '/', element: <Home /> },
         { path: 'signin', element: <SignIn id="signin" /> },
         { path: 'signup', element: <SignUp id="signup" /> },
+        { path: 'redux-demo', element: <ReduxDemo /> },
         {
           path: 'authorized',
           element: <Authorized />,
