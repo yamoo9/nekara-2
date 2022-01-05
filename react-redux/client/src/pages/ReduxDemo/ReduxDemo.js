@@ -1,16 +1,17 @@
 import styles from './ReduxDemo.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet-async';
-import { setDocumentTitle } from 'utils';
+import { cssVar, setDocumentTitle } from 'utils';
 import {
   moveLeft as moveLeftAction,
   moveRight as moveRightAction,
   changeRandomBallColor as changeRandomBallColorAction,
 } from 'store/slices/ball';
+import { useLayoutEffect } from 'react';
 
 export default function ReduxDemo(props) {
   // Redux 상태를 가져오기
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.ball);
 
   // Redux 상태 업데이트를 요청할 dispatch 함수 가져오기
   const dispatch = useDispatch();
@@ -25,8 +26,11 @@ export default function ReduxDemo(props) {
 
   const changeRandomBallColor = () => {
     dispatch(changeRandomBallColorAction());
-    // cssVar('--color', state.color);
   };
+
+  useLayoutEffect(() => {
+    cssVar('--color', state.color);
+  }, [state.color]);
 
   return (
     <>

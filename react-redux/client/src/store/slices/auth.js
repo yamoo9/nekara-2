@@ -1,3 +1,5 @@
+import { signIn } from 'services';
+
 // initial state
 const initialState = null;
 
@@ -14,6 +16,17 @@ export const signInAction = (payload) => ({
 export const signOutAction = () => ({
   type: SIGN_OUT,
 });
+
+// thunk(async) action
+export const signInActionAsync = (requestData, callback) => (dispatch) => {
+  signIn(requestData)
+    .then(({ data }) => {
+      const { name, email, isAdmin } = data;
+      dispatch(signInAction({ name, email, isAdmin }));
+      callback?.();
+    })
+    .catch((error) => console.error(error.message));
+};
 
 // reducer
 export default function authReducer(state = initialState, action) {

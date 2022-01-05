@@ -22,6 +22,10 @@ export const Header = forwardRef(function Header({ blur }, ref) {
       text: '리덕스데모',
       to: '/redux-demo',
     },
+    {
+      text: '모음',
+      to: '/vowels',
+    },
   ]);
 
   return (

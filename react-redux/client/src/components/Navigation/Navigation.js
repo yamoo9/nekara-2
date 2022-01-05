@@ -5,14 +5,14 @@ import { string } from 'prop-types';
 import { NavigationItemsType } from './Navigation.types';
 import { Container, List, Item, Link, SignOut } from './Navigation.styled';
 import { A11yHidden } from 'components';
-import { signOutAction } from 'store/slices/auth';
+import { signOutAction } from 'store/features/auth';
 
 export function Navigation({
   id = 'global-navigation',
   label = '글로벌 내비게이션',
   items: initialItems = [],
 }) {
-  const authUser = useSelector(({ auth }) => auth);
+  const { authUser } = useSelector(({ auth }) => auth);
   const dispatch = useDispatch();
 
   const [items] = useState(initialItems);

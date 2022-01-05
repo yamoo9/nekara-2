@@ -5,9 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { string } from 'prop-types';
 import { useDispatch } from 'react-redux';
 
-import { signInAction } from 'store/slices/auth';
-
-import { signIn } from 'services';
+import { fetchSignIn } from 'store/features/auth';
 import { isEmail, isPassword, setDocumentTitle } from 'utils';
 import { Form } from 'components';
 
@@ -71,16 +69,7 @@ export default function SignIn({ id, ...restProps }) {
         requestData[key] = value;
       }
 
-      signIn(requestData)
-        .then(({ data }) => {
-          const { name, email, isAdmin } = data;
-
-          // Redux의 스토어에 상태 업데이트 요청
-          dispatch(signInAction({ name, email, isAdmin }));
-
-          navigate('/authorized');
-        })
-        .catch((error) => console.error(error.message));
+      dispatch(fetchSignIn(requestData)).then(() => navigate('/authorized'));
     },
     [navigate, dispatch]
   );

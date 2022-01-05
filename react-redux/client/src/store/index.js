@@ -1,12 +1,16 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import rootReducer from './slices';
+
+import { vowelsApi } from 'services/vowels';
+import rootReducer from './features';
 
 // 스토어 생성
-export const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (defaultMiddleware) =>
+    defaultMiddleware().concat(vowelsApi.middleware),
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
 // 스토어 프로바이더 래퍼 컴포넌트
 export const StoreProvider = (props) => {

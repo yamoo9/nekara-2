@@ -13,6 +13,8 @@ const Layout = lazyComponent('Layout');
 const SignIn = lazyComponent('SignIn');
 const SignUp = lazyComponent('SignUp');
 const ReduxDemo = lazyComponent('ReduxDemo');
+const Vowels = lazyComponent('Vowels');
+const Vowel = lazyComponent('Vowel');
 const Authorized = lazyComponent('Authorized');
 const PageNotFound = lazyComponent('PageNotFound');
 
@@ -29,6 +31,8 @@ export default function App() {
         { path: 'signin', element: <SignIn id="signin" /> },
         { path: 'signup', element: <SignUp id="signup" /> },
         { path: 'redux-demo', element: <ReduxDemo /> },
+        { path: 'vowels', element: <Vowels /> },
+        { path: 'vowel/:id', element: <Vowel /> },
         {
           path: 'authorized',
           element: (
